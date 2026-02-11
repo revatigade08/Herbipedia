@@ -1,6 +1,6 @@
-# Virtual Garden 🌱
+# Herbipedia 🌱
 
-**Virtual Herbal Garden** is a dynamic website that offers detailed information about a variety of plants, allowing users to explore and interact with them in a virtual space. Users can move, zoom in, and examine plants closely to better understand their characteristics. The platform serves as an engaging educational tool, helping users gain valuable knowledge about plant species and their care through an immersive digital experience.
+**Herbipedia** is a dynamic website that offers detailed information about a variety of plants, allowing users to explore and interact with them in a virtual space. Users can move, zoom in, and examine plants closely to better understand their characteristics. The platform serves as an engaging educational tool, helping users gain valuable knowledge about plant species and their care through an immersive digital experience.
 
 
 ---
@@ -11,7 +11,7 @@ Follow these steps to explore the Virtual Garden project:
 
 1. **Visit the Website**  
    Access the live site hosted via GitHub Pages:  
-   👉 [VIRTUAL GARDEN](https://virtual-garden-project.github.io/Virtual-Garden/)
+   👉
 
 2. **Explore Plants**  
    - Browse through the homepage to view featured plants.
@@ -50,8 +50,6 @@ Follow these steps to explore the Virtual Garden project:
 
 ## 👨‍👩‍👧‍👦 Team Members
 
-- **Hiten Parmar** – [@Hiten2404](https://github.com/Hiten2404)  
-- **Diya Sonera** – [@git-diya](https://github.com/git-diya)
 
 
 ---
