@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ginger Plant Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #b45309;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .left-column {
+      flex: 1.5;
+    }
+
+    .right-column {
+      flex: 1;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .plant-image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      margin-bottom: 15px;
+    }
+
+    .info-box strong {
+      color: #b45309;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin: 40px 0 20px;
+      color: #92400e;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 15px;
+      border-left: 6px solid #fbbf24;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #92400e;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Ginger (Zingiber officinale)</h1>
+  </header>
+  <div class="container">
+    <div class="left-column">
+      <img src="ginger.jpg" alt="Ginger Root" class="plant-image">
+      <div class="description">
+        Ginger is a flowering plant widely valued for its spicy, aromatic rhizome. It has been used for centuries in cooking, traditional medicine, and natural wellness practices around the world.
+      </div>
+      <div class="section-title">Plant Attributes & Uses</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Scientific Classification</h3>
+          <p><strong>Family:</strong> Zingiberaceae<br><strong>Genus:</strong> Zingiber<br><strong>Species:</strong> Z. officinale</p>
+        </div>
+        <div class="card">
+          <h3>Global Spread</h3>
+          <p>Native to Southeast Asia; cultivated globally in warm and humid climates.</p>
+        </div>
+        <div class="card">
+          <h3>Preferred Climate</h3>
+          <p>Thrives in tropical, subtropical environments with moist, well-drained soil.</p>
+        </div>
+        <div class="card">
+          <h3>Medicinal Uses</h3>
+          <p>Used to treat nausea, inflammation, colds, indigestion, and muscle soreness.</p>
+        </div>
+        <div class="card">
+          <h3>Traditional Uses</h3>
+          <p>Used in teas, pastes, tonics, and remedies for its warming and digestive properties.</p>
+        </div>
+        <div class="card">
+          <h3>Cosmetic Benefits</h3>
+          <p>Ginger extract is found in products for stimulating circulation and toning skin.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <h2 style="color: #b45309;">Garden Information</h2>
+      <div class="info-box"><strong>Hardiness:</strong> Zones 9–12</div>
+      <div class="info-box"><strong>Climate Zones:</strong> Tropical, Subtropical</div>
+      <div class="info-box"><strong>Exposure:</strong> Partial Shade to Full Sun</div>
+      <div class="info-box"><strong>Soil Type:</strong> Rich, loose, well-drained soil</div>
+      <div class="info-box"><strong>Water Needs:</strong> Regular watering, prefers consistently moist conditions</div>
+    </div>
+  </div>
+</body>
+
+</html>

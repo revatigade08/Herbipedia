@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garlic Plant Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #2d572c;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .left-column {
+      flex: 1.5;
+    }
+
+    .right-column {
+      flex: 1;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .plant-image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      margin-bottom: 15px;
+    }
+
+    .info-box strong {
+      color: #2d572c;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin: 40px 0 20px;
+      color: #437c41;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 15px;
+      border-left: 6px solid #76b947;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #437c41;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Garlic (Allium sativum)</h1>
+  </header>
+  <div class="container">
+    <div class="left-column">
+        <img src="garlic.jpg" alt="Garlic Plant" class="plant-image">
+
+      <div class="description">
+        Garlic is a widely used herb known for its strong aroma and medicinal properties.
+        It has been used for centuries in cooking, medicine, and traditional practices.
+      </div>
+      <div class="section-title">Plant Attributes & Uses</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Scientific Classification</h3>
+          <p><strong>Family:</strong> Amaryllidaceae<br><strong>Genus:</strong> Allium<br><strong>Species:</strong> A. sativum</p>
+        </div>
+        <div class="card">
+          <h3>Global Spread</h3>
+          <p>Grown worldwide in various climates.</p>
+        </div>
+        <div class="card">
+          <h3>Preferred Climate</h3>
+          <p>Cool, sunny locations with well-drained soil.</p>
+        </div>
+        <div class="card">
+          <h3>Medicinal Uses</h3>
+          <p>Antibacterial, antifungal, boosts immunity, supports heart health.</p>
+        </div>
+        <div class="card">
+          <h3>Traditional Uses</h3>
+          <p>Used in cooking, natural remedies, and as a pest repellent.</p>
+        </div>
+        <div class="card">
+          <h3>Culinary Benefits</h3>
+          <p>Enhances flavor in dishes, used in spices, oils, and sauces.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <h2 style="color: #2d572c;">Garden Information</h2>
+      <div class="info-box"><strong>Hardiness:</strong> Zones 3–10</div>
+      <div class="info-box"><strong>Climate Zones:</strong> Temperate, Mediterranean</div>
+      <div class="info-box"><strong>Exposure:</strong> Full Sun</div>
+      <div class="info-box"><strong>Soil Type:</strong> Well-drained, loamy soil</div>
+      <div class="info-box"><strong>Water Needs:</strong> Moderate</div>
+    </div>
+  </div>
+</body>
+
+</html>

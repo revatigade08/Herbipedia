@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marigold Plant Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #ea580c;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .left-column {
+      flex: 1.5;
+    }
+
+    .right-column {
+      flex: 1;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .plant-image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      margin-bottom: 15px;
+    }
+
+    .info-box strong {
+      color: #ea580c;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin: 40px 0 20px;
+      color: #d97706;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 15px;
+      border-left: 6px solid #f59e0b;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #d97706;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Marigold (Tagetes spp.)</h1>
+  </header>
+  <div class="container">
+    <div class="left-column">
+      <img src="marigold.jpg" alt="Marigold Flower" class="plant-image">
+      <div class="description">
+        Marigold is a bright, hardy annual known for its golden blooms and strong scent. Widely used in gardens,
+        festivals, and traditional medicine, it symbolizes positivity, protection, and healing.
+      </div>
+      <div class="section-title">Plant Attributes & Uses</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Scientific Classification</h3>
+          <p><strong>Family:</strong> Asteraceae<br><strong>Genus:</strong> Tagetes<br><strong>Species:</strong> Various (e.g., T. erecta, T. patula)</p>
+        </div>
+        <div class="card">
+          <h3>Global Spread</h3>
+          <p>Native to the Americas, now cultivated globally, especially in South Asia and Africa.</p>
+        </div>
+        <div class="card">
+          <h3>Preferred Climate</h3>
+          <p>Thrives in full sun and warm weather; tolerates heat well and grows quickly.</p>
+        </div>
+        <div class="card">
+          <h3>Medicinal Uses</h3>
+          <p>Traditionally used for its anti-inflammatory, antiseptic, and wound-healing properties.</p>
+        </div>
+        <div class="card">
+          <h3>Traditional Uses</h3>
+          <p>Used in garlands, religious ceremonies, and festivals like Dia de los Muertos and Diwali.</p>
+        </div>
+        <div class="card">
+          <h3>Cosmetic Benefits</h3>
+          <p>Contains antioxidants and is used in creams and herbal treatments for skin clarity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <h2 style="color: #ea580c;">Garden Information</h2>
+      <div class="info-box"><strong>Hardiness:</strong> Grown as annual; Zones 2–11</div>
+      <div class="info-box"><strong>Climate Zones:</strong> Tropical, Subtropical, Temperate</div>
+      <div class="info-box"><strong>Exposure:</strong> Full Sun</div>
+      <div class="info-box"><strong>Soil Type:</strong> Well-drained, moderately fertile soil</div>
+      <div class="info-box"><strong>Water Needs:</strong> Moderate; avoid overwatering</div>
+    </div>
+  </div>
+</body>
+
+</html>

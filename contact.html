@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Herbipedia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /* Header & Nav Styles (copied and adapted from index.html) */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      flex-shrink: 0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: bold;
+      background-color: #f4f4f4;
+      color: #333;
+      height: 100vh;
+      /* Make page fill viewport */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Center content vertically */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      background: linear-gradient(to right, #fff, #e0f7e9);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      animation: slideDown 0.3s;
+      height: 60px;
+      /* Ensures consistent header height */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: ' ' Nunito', sans-serif';
+      margin-bottom: 0;
+      /* Remove any bottom margin */
+    }
+
+    .brand-name {
+      font-family: 'Nunito', 'sans-serif';
+      font-weight: bold;
+      background: linear-gradient(90deg, #3a6b4b 0%, #6bbf59 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      padding-top: 12px;
+    }
+
+    .brand-name .highlight {
+      color: #66BB6A;
+      font-weight: bold;
+      /* Make "Garden" bold */
+    }
+
+    .logo i {
+      color: #4CAF50;
+      font-size: 1.3rem;
+      display: inline-block;
+      transition: transform 0.2s ease-in-out;
+      margin-right: 4px;
+      padding-top: 12px;
+    }
+
+    .logo:hover i {
+      transform: rotate(-18deg) scale(1.18);
+      color: #6bbf59;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      position: relative;
+      text-decoration: none;
+      color: #25362b;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: bold;
+      padding: 7px 22px;
+      font-size: 1rem;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    nav a i {
+      margin-right: 6px;
+      color: #4CAF50;
+      transition: transform 0.3s;
+      font-size: 1rem;
+    }
+
+    nav a:hover i {
+      transform: scale(1.2) rotate(-10deg);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0%;
+      background-color: #6bbf59;
+      transition: width 0.3s;
+    }
+
+    nav a:hover {
+      color: #3a6b4b;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      color: #3a6b4b;
+      background: none;
+      border: none;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        height: auto !important;
+        align-items: flex-start !important;
+        padding: 0.5rem 0.5rem;
+      }
+
+      .logo {
+        align-items: center;
+        font-size: 1.4rem;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.6rem;
+        margin-top: 0;
+        align-self: center;
+        font-weight: normal !important;
+      }
+
+      nav {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(42, 157, 143, 0.10);
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        z-index: 1000;
+        min-width: 180px;
+        animation: fadeInUp 0.3s;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        color: #3a6b4b;
+        border-bottom: 1px solid #e0f2ee;
+        margin: 0;
+        text-align: left;
+      }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
+
+      #navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(42, 157, 143, 0.10);
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        z-index: 1000;
+        min-width: 180px;
+        animation: fadeInUp 0.3s;
+      }
+
+      #navbar.show {
+        display: flex;
+      }
+
+      #navbar a {
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        color: #3a6b4b;
+        border-bottom: 1px solid #e0f2ee;
+        margin: 0;
+        text-align: left;
+      }
+
+      #navbar a:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Contact Form */
+    .contact-container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .contact-container h2 {
+      color: #2a9d8f;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .contact-form button:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      background-color: #264653;
+      color: #e0f2ee;
+      text-align: center;
+      padding: 12px 0 8px 0;
+      margin: 0;
+      font-size: 16px;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    footer p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      unicode-bidi: isolate;
+    }
+
+    footer,
+    #Footer,
+    /* #Footer p, */
+    #Footer a {
+      font-weight: normal;
+    }
+
+    /* Fade in effect */
+    body {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Header Logo and Menu */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo i {
+      font-size: 1.3rem;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      background: linear-gradient(90deg, #3a6b4b 0%, #6bbf59 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    #navbar {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      align-content: space-around;
+      align-items: stretch;
+    }
+
+    #navbar a {
+      display: flex;
+      align-items: center;
+      margin: 0 11px;
+      text-decoration: none;
+      color: #25362b;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      padding: 7px 28px;
+      font-size: 1rem;
+    }
+
+    #navbar a i {
+      margin-right: 5px;
+    }
+
+    #navbar a:hover {
+      color: #3a6b4b;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        height: auto !important;
+        align-items: flex-start !important;
+        padding: 0px 9px 0px 8px;
+      }
+
+      .logo {
+        align-items: center;
+        font-size: 1.4rem;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.6rem;
+        margin-top: -4px;
+        align-self: center;
+        font-weight: normal !important;
+      }
+
+      #navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(42, 157, 143, 0.10);
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        z-index: 1000;
+        min-width: 180px;
+        animation: fadeInUp 0.3s;
+      }
+
+      #navbar.show {
+        display: flex;
+      }
+
+      #navbar a {
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        color: #3a6b4b;
+        border-bottom: 1px solid #e0f2ee;
+        margin: 0;
+        text-align: left;
+      }
+
+      #navbar a:last-child {
+        border-bottom: none;
+      }
+    }
+
+    #Footer {
+      font-family: 'Nunito', sans-serif;
+      background-color: #3a6b4b;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 10px;
+    }
+
+    #Footer a {
+      color: #FFD700;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    #Footer a:hover {
+      color: #fff176;
+    }
+
+    #Footer p {
+      margin: 3px 0px -3px 0px;
+          padding: 0px 0px 0px 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;">
+    <span class="logo" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+      <i class="fas fa-leaf"></i>
+      <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+    </span>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav id="navbar">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
+      <a href="about.html"><i class="fas fa-users"></i> About Us</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contact-container">
+      <h2>Get In Touch</h2>
+      <p>If you have any questions, comments, or any suggestions about our Herbipedia, feel free to contact
+        us!</p>
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer id="Footer">
+    <p>
+      &copy; 2026 Herbipedia. All rights reserved.
+    </p>
+    <p><a href="contact.html">Contact Us</a></p>
+  </footer>
+  <div id="footer"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    // Fade in effect when page is loaded
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Menu Toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('navbar').classList.toggle('show');
+    });
+
+    // Optional: Close menu when a nav link is clicked (mobile)
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function () {
+        document.getElementById('navbar').classList.remove('show');
+      });
+    });
+
+    // Change header shadow on scroll
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      if (window.scrollY > 10) {
+        header.style.boxShadow = '0 4px 16px rgba(76,175,80,0.10)';
+      } else {
+        header.style.boxShadow = '0 2px 6px rgba(0,0,0,0.05)';
+      }
+    });
+
+    async function loadTemplate(selector, url) {
+      const resp = await fetch(url);
+      const html = await resp.text();
+      document.querySelector(selector).innerHTML = html;
+    }
+
+
+  </script>
+</body>
+
+</html>

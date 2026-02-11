@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rosemary Plant Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #2e7d32;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .left-column {
+      flex: 1.5;
+    }
+
+    .right-column {
+      flex: 1;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .plant-image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      margin-bottom: 15px;
+    }
+
+    .info-box strong {
+      color: #2e7d32;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin: 40px 0 20px;
+      color: #1b5e20;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 15px;
+      border-left: 6px solid #81c784;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Rosemary (Salvia rosmarinus)</h1>
+  </header>
+  <div class="container">
+    <div class="left-column">
+      <img src="rosemary.jpg" alt="Rosemary Plant" class="plant-image">
+      <div class="description">
+        Rosemary is a woody, perennial herb with fragrant, evergreen needle-like leaves. Known for its culinary and
+        medicinal uses, it's cherished in Mediterranean cuisine and folk remedies alike.
+      </div>
+      <div class="section-title">Plant Attributes & Uses</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Scientific Classification</h3>
+          <p><strong>Family:</strong> Lamiaceae<br><strong>Genus:</strong> Salvia<br><strong>Species:</strong> S. rosmarinus</p>
+        </div>
+        <div class="card">
+          <h3>Global Spread</h3>
+          <p>Native to the Mediterranean region; widely grown in temperate climates globally.</p>
+        </div>
+        <div class="card">
+          <h3>Preferred Climate</h3>
+          <p>Warm, sunny climates with well-drained soil; drought-tolerant once established.</p>
+        </div>
+        <div class="card">
+          <h3>Medicinal Uses</h3>
+          <p>Supports memory, digestion, and circulation; used as a natural antioxidant and anti-inflammatory.</p>
+        </div>
+        <div class="card">
+          <h3>Traditional Uses</h3>
+          <p>Used in smudging, herbal baths, teas, and as a symbol of remembrance in various cultures.</p>
+        </div>
+        <div class="card">
+          <h3>Cosmetic Benefits</h3>
+          <p>Used in shampoos and toners to promote hair growth and skin clarity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <h2 style="color: #2e7d32;">Garden Information</h2>
+      <div class="info-box"><strong>Hardiness:</strong> Zones 7–10</div>
+      <div class="info-box"><strong>Climate Zones:</strong> Mediterranean, Temperate</div>
+      <div class="info-box"><strong>Exposure:</strong> Full Sun</div>
+      <div class="info-box"><strong>Soil Type:</strong> Sandy, well-drained soil</div>
+      <div class="info-box"><strong>Water Needs:</strong> Low to moderate; avoid overwatering</div>
+    </div>
+  </div>
+</body>
+
+</html>

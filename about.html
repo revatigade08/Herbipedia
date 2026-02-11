@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Herbipedia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-green: #3a6b4b;
+      --accent-green: #6bbf59;
+      --background: #f9faf8;
+      --white: #fff;
+      --text-dark: #25362b;
+      --accent-yellow: #FFD700;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; height: 100vh; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #f9faf8 0%, #e0f2ee 100%);
+      color: var(--text-dark);
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body.loaded { opacity: 1; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: linear-gradient(to right, #fff, #e0f7e9);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      animation: slideDown 0.3s;
+      position: relative;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .logo-text {
+      background: linear-gradient(90deg, #3a6b4b 0%, #6bbf59 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo i {
+      color: #4CAF50;
+      font-size: 1.3rem;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .logo:hover i {
+      transform: rotate(-18deg) scale(1.18);
+      color: #6bbf59;
+    }
+    .brand-name { color: #2E7D32; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+    .brand-name .highlight { color: #66BB6A; }
+    nav a {
+      position: relative;
+      text-decoration: none;
+      color: #25362b;
+      font-weight: 600;
+      padding: 7px 22px;
+      transition: color 0.3s;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    nav a i {
+      margin-right: 6px;
+      color: #4CAF50;
+      transition: transform 0.3s;
+    }
+    nav a:hover i { transform: scale(1.2) rotate(-10deg); }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px; width: 0%;
+      background-color: #6bbf59;
+      transition: width 0.3s;
+    }
+    nav a:hover { color: #3a6b4b; }
+    nav a:hover::after { width: 100%; }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      color: #3a6b4b;
+      background: none;
+      border: none;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-toggle:focus { outline: none; box-shadow: none; }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        height: 60px;
+      }
+      .logo { font-size: 1.4rem; gap: 4px; }
+      .logo i { font-size: 1.4rem; }
+      .menu-toggle { display: block; font-size: 1.6rem; margin-top: -4px; }
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(42, 157, 143, 0.10);
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        z-index: 1000;
+        min-width: 180px;
+        animation: fadeInUp 0.3s;
+      }
+      nav.show { display: flex; }
+      nav a {
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        color: #3a6b4b;
+        border-bottom: 1px solid #e0f2ee;
+        margin: 0;
+        text-align: left;
+      }
+      nav a:last-child { border-bottom: none; }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+    .about-container h2 {
+      color: var(--main-green);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .about-container p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .contact {
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      background: #ecfdf5;
+      padding: 1rem;
+      border-left: 6px solid var(--accent-green);
+      border-radius: 10px;
+    }
+    #Footer {
+      font-family: 'Nunito', sans-serif;
+      background-color: #3a6b4b;
+      color: white;
+      text-align: center;
+      padding: 19px;
+      margin-top: 46px;
+    }
+    #Footer a {
+      color: #FFD700;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    #Footer a:hover { color: #fff176; }
+    #Footer p { margin: 1px 0 0 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">
+      <i class="fas fa-leaf"></i>
+      <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+    </span>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav id="navbar">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
+      <a href="about.html"><i class="fas fa-users"></i> About Us</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    </nav>
+  </header>
+  <main>
+    <div class="about-container">
+      <h2>Who We Are</h2>
+      <p>Welcome to our Herbipedia — a creative blend of botanical knowledge and digital innovation. From
+        ancient remedies to modern-day relevance, we bring to life India's cherished herbal plants using immersive 3D
+        experiences.</p>
+      <p>Our mission is to foster awareness, educate students, and promote the use of natural healing through
+        interactive learning. Each plant you see is backed by research, tradition, and an intuitive design to make
+        learning enjoyable and impactful.</p>
+      <p>Whether you're exploring for health, curiosity, or educational growth — our garden has something for everyone.
+      </p>
+      <p class="contact">📧 Get in touch with us: <strong>herbipedia2026@gmail.com</strong></p>
+    </div>
+  </main>
+  <footer id="Footer">
+    <p>&copy; 2026 Herbipedia. All rights reserved.</p>
+    <p><a href="contact.html">Contact Us</a></p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    // Fade-in effect
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    // Mobile nav toggle
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.getElementById('navbar').classList.toggle('show');
+    });
+    // Animate logo on page load
+    gsap.to('.logo', {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "back.out(1.7)",
+      delay: 0.2
+    });
+    // Change header shadow on scroll
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      header.style.boxShadow = window.scrollY > 10
+        ? '0 4px 16px rgba(76,175,80,0.10)'
+        : '0 2px 4px rgba(0,0,0,0.1)';
+    });
+  </script>
+</body>
+</html>
