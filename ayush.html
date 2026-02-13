@@ -119,6 +119,57 @@
             font-family: 'Poppins', Arial, sans-serif;
         }
         .search-bar button:hover { background: #3a6b4b; }
+
+
+
+
+
+         .filter-container {
+                position: relative;
+                display: inline-block;
+        }
+
+        .filter-btn {
+                background-color: #6bbf59;
+                color: white;
+                border: none;
+                padding: 12px 22px;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .filter-btn:hover {
+                background-color: #3a6b4b;
+        }
+
+        .filter-dropdown {
+                position: absolute;
+                top: 55px;
+                left: 0;
+                background: white;
+                width: 230px;
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                display: none;
+                z-index: 1000;
+        }
+
+        .filter-dropdown div {
+                padding: 12px 16px;
+                cursor: pointer;
+        }
+
+        .filter-dropdown div:hover {
+                background-color: #f2f2f2;
+        }
+
+
+        
+
+        
         main {
             padding: 3rem 2rem;
             max-width: 1200px;
@@ -321,6 +372,34 @@
         <input type="text" id="search-input" placeholder="Search for a plant...">
         <button onclick="filterPlants()">Search</button>
     </div>
+
+
+    
+
+ <div class="filter-container">
+  <button class="filter-btn" id="filterBtn">
+    Filter ▼
+  </button>
+
+  <div class="filter-dropdown" id="filterDropdown">
+    <div data-value="all">All</div>
+    <div data-value="health">Culinary</div>
+    <div data-value="skincare">Skincare</div>
+    <div data-value="haircare">Haircare</div>
+    <div data-value="cosmetics">Cosmetics</div>
+    <div data-value="Digestion">Digestion</div>
+    <div data-value="DentalCare">Dental care</div>
+    <div data-value="Immunity">Immunity</div>
+    <div data-value="Respiratory support">Respiratory support</div>
+    <div data-value="Blood sugar control">Blood sugar control</div>
+    <div data-value="perfumes">Perfumes</div>
+    <div data-value="Spritiual rituals">Spiritual rituals</div>
+  </div>
+</div>
+
+
+
+    
     <main>
         <h2>Explore the Plants in 3D</h2>
         <div class="plant-viewer" id="plant-viewer">
@@ -592,6 +671,37 @@
                 ? '0 4px 16px rgba(76,175,80,0.10)'
                 : '0 2px 6px rgba(0,0,0,0.05)';
         });
+
+
+
+        
+
+        // ================= FILTER DROPDOWN LOGIC =================
+const filterBtn = document.getElementById("filterBtn");
+const filterDropdown = document.getElementById("filterDropdown");
+
+// Toggle dropdown on button click
+filterBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    filterDropdown.style.display =
+        filterDropdown.style.display === "block" ? "none" : "block";
+});
+
+// Handle filter option click
+document.querySelectorAll(".filter-dropdown div").forEach(item => {
+    item.addEventListener("click", function () {
+        const value = this.getAttribute("data-value");
+        filterBtn.innerHTML = this.innerText + " ▼";
+        filterDropdown.style.display = "none";
+        filterPlants(value); // optional filtering hook
+    });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function () {
+    filterDropdown.style.display = "none";
+});
+        
     </script>
     <script src="//code.tidio.co/jkz58qnv5cjqlyh3azdphziunrt9qhu.js" async></script>
 </body>
