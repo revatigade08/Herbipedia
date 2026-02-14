@@ -20,3 +20,4 @@ const app = initializeApp(firebaseConfig);
 // Initialize Authentication and Firestore
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+console.log("Firebase config loaded");
