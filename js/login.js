@@ -9,10 +9,10 @@ const toggleBtn = document.getElementById("togglePassword");
 toggleBtn.addEventListener("click", () => {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
-    toggleBtn.textContent = "Hide";
+    toggleBtn.textContent = "🙈";
   } else {
     passwordInput.type = "password";
-    toggleBtn.textContent = "Show";
+    toggleBtn.textContent = "👁";
   }
 });
 
