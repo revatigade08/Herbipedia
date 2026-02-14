@@ -188,17 +188,41 @@ button[type="submit"]:hover {
     border: none;
 }
 
-/* ================= AUTH PAGES (LOGIN + REGISTER) ================= */
+/* ================= AUTH PAGE BACKGROUND ================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+
+    background: url("https://raw.githubusercontent.com/revatigade08/Herbipedia/main/images/kifoku-waterfall-21666_512.gif") no-repeat center center;
+    background-size: cover;
+}
+
+.auth-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+/* ================= AUTH CONTAINER ================= */
 
 .auth-container {
-    background: linear-gradient(145deg, #1e1e1e, #242424);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
     padding: 40px;
-    width: 380px;
-    margin: 80px auto;
-    border-radius: 15px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     text-align: center;
-    animation: fadeIn 0.6s ease;
 }
 
 .auth-container h2 {
@@ -215,24 +239,18 @@ button[type="submit"]:hover {
 
 .password-wrapper input {
     width: 100%;
-    padding-right: 40px;
+    padding-right: 45px;
 }
 
 /* Eye Icon */
 .eye-icon {
     position: absolute;
-    right: 12px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 18px;
     color: #4CAF50;
-    transition: 0.3s ease;
-}
-
-.eye-icon:hover {
-    color: #1abc9c;
-    transform: translateY(-50%) scale(1.1);
 }
 
 /* Auth Links */
@@ -249,16 +267,4 @@ button[type="submit"]:hover {
 
 .auth-container a:hover {
     color: #1abc9c;
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
