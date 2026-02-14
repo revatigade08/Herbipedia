@@ -1,4 +1,4 @@
-/* styles.css */
+/* ================= GLOBAL RESET ================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +7,13 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #141414;
+    background: linear-gradient(135deg, #141414, #1c1c1c);
     color: #e0e0e0;
     margin-bottom: 100px;
     scroll-behavior: smooth;
-   
 }
+
+/* ================= HEADER ================= */
 header {
     background-color: #4CAF50;
     color: white;
@@ -25,7 +26,7 @@ nav a {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
@@ -38,9 +39,10 @@ h1, h2 {
 }
 
 h2 {
-    color: #1abc3d;
+    color: #4CAF50;
 }
 
+/* ================= SECTIONS ================= */
 section {
     padding: 2rem 0;
     text-align: center;
@@ -54,6 +56,7 @@ section {
     max-width: 900px;
 }
 
+/* ================= FOOTER ================= */
 footer {
     background-color: #333;
     color: white;
@@ -69,6 +72,7 @@ footer p {
     margin: 0;
 }
 
+/* ================= FORMS ================= */
 form {
     display: flex;
     flex-direction: column;
@@ -77,18 +81,20 @@ form {
     gap: 1rem;
 }
 
-input, textarea {
-    padding: 0.5rem;
+input, textarea, select {
+    padding: 0.6rem;
     font-size: 1rem;
-    border: 1px solid #1abc9c;
-    border-radius: 5px;
-    background-color: #333;
+    border: 1px solid #4CAF50;
+    border-radius: 6px;
+    background-color: #2b2b2b;
     color: white;
+    transition: 0.3s ease;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: #16a085;
+    border-color: #1abc9c;
+    box-shadow: 0 0 5px #1abc9c;
 }
 
 button[type="submit"] {
@@ -96,16 +102,18 @@ button[type="submit"] {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s ease;
+    font-weight: 600;
 }
 
 button[type="submit"]:hover {
     background-color: #45a049;
+    transform: translateY(-2px);
 }
 
-/* Responsive Design */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .plant-viewer {
         flex-direction: column;
@@ -116,8 +124,7 @@ button[type="submit"]:hover {
     }
 }
 
-
-/* Floating Button */
+/* ================= FLOATING CHAT BUTTON ================= */
 #chatbot-button {
     position: fixed;
     bottom: 25px;
@@ -141,13 +148,13 @@ button[type="submit"]:hover {
     transform: scale(1.1);
 }
 
-/* Chat Popup */
+/* ================= CHAT POPUP ================= */
 #chatbot-popup {
     position: fixed;
     bottom: 110px;
     right: 25px;
-    width: 420px;        /* Enlarged  */
-    height: 600px;       /* Enlarged  */
+    width: 420px;
+    height: 600px;
     background: #ffffff;
     border-radius: 18px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.3);
@@ -157,7 +164,6 @@ button[type="submit"]:hover {
     z-index: 9999;
 }
 
-/* Header */
 .chatbot-header {
     background: #4CAF50;
     color: white;
@@ -168,7 +174,6 @@ button[type="submit"]:hover {
     font-weight: 600;
 }
 
-/* Close Button */
 #close-chatbot {
     background: none;
     border: none;
@@ -177,77 +182,83 @@ button[type="submit"]:hover {
     cursor: pointer;
 }
 
-/* Iframe */
 #chatbot-popup iframe {
     width: 100%;
     height: 100%;
     border: none;
 }
-/* ================= AUTH PAGES ================= */
+
+/* ================= AUTH PAGES (LOGIN + REGISTER) ================= */
 
 .auth-container {
-    background-color: #1e1e1e;
+    background: linear-gradient(145deg, #1e1e1e, #242424);
     padding: 40px;
     width: 380px;
     margin: 80px auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
     text-align: center;
+    animation: fadeIn 0.6s ease;
 }
 
 .auth-container h2 {
     margin-bottom: 25px;
     color: #4CAF50;
-}
-
-.auth-container form {
-    width: 100%;
-    gap: 15px;
-}
-
-.auth-container input,
-.auth-container select {
-    padding: 10px;
-    border: 1px solid #4CAF50;
-    border-radius: 6px;
-    background-color: #2b2b2b;
-    color: #fff;
-    font-size: 14px;
-}
-
-.auth-container input:focus,
-.auth-container select:focus {
-    outline: none;
-    border-color: #1abc9c;
-}
-
-.auth-container button[type="submit"] {
-    margin-top: 10px;
+    font-size: 24px;
 }
 
 /* Password Wrapper */
 .password-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    position: relative;
+    width: 100%;
 }
 
 .password-wrapper input {
-    flex: 1;
+    width: 100%;
+    padding-right: 40px;
 }
 
-.password-wrapper button {
-    padding: 8px 12px;
-    background-color: #333;
-    border: 1px solid #4CAF50;
-    color: #4CAF50;
-    border-radius: 6px;
+/* Eye Icon */
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
+    font-size: 18px;
+    color: #4CAF50;
     transition: 0.3s ease;
 }
 
-.password-wrapper button:hover {
-    background-color: #4CAF50;
-    color: #fff;
+.eye-icon:hover {
+    color: #1abc9c;
+    transform: translateY(-50%) scale(1.1);
 }
 
+/* Auth Links */
+.auth-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-container a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-container a:hover {
+    color: #1abc9c;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
