@@ -11,16 +11,15 @@ html, body {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 
-  /* Waterfall Background */
   background: url("https://raw.githubusercontent.com/revatigade08/Herbipedia/main/images/kifoku-waterfall-21666_512.gif")
               no-repeat center center fixed;
   background-size: cover;
 
   display: flex;
-  justify-content: center;   /* Horizontal center */
-  align-items: center;       /* Vertical center */
+  justify-content: center;
+  align-items: center;
 }
 
 /* ===== DARK OVERLAY ===== */
@@ -32,42 +31,71 @@ body::before {
   z-index: -1;
 }
 
-/* ===== FORM CONTAINER ===== */
+/* ===== PREMIUM GLASS CONTAINER ===== */
 .auth-container {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  padding: 45px 40px;
+  border-radius: 22px;
+
   width: 90%;
-  max-width: 380px;
-  animation: fadeIn 0.6s ease-in-out;
+  max-width: 390px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.08);
+
+  animation: fadeIn 0.8s ease;
+  transition: transform 0.3s ease;
+}
+
+/* Subtle floating hover */
+.auth-container:hover {
+  transform: translateY(-5px);
 }
 
 /* ===== HEADING ===== */
 .auth-container h2 {
   text-align: center;
-  margin-bottom: 25px;
-  color: #1e8e5a;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-/* ===== INPUTS ===== */
+/* ===== INPUT FIELDS ===== */
 .auth-container input,
 .auth-container select {
   width: 100%;
-  padding: 12px 45px 12px 12px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  padding: 14px 45px 14px 14px;
+  margin-bottom: 18px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+
   font-size: 14px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
+/* Placeholder styling */
+.auth-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focus effect */
 .auth-container input:focus,
 .auth-container select:focus {
-  border-color: #2bb673;
   outline: none;
-  box-shadow: 0 0 8px rgba(43, 182, 115, 0.4);
+  border-color: #2bb673;
+  box-shadow: 0 0 15px rgba(43, 182, 115, 0.6);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ===== PASSWORD WRAPPER ===== */
@@ -77,56 +105,77 @@ body::before {
 
 .eye-icon {
   position: absolute;
-  right: 12px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  color: #ffffff;
   font-size: 16px;
 }
 
-/* ===== BUTTON ===== */
+/* ===== PREMIUM BUTTON ===== */
 .auth-container button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 10px;
-  background: #2bb673;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #2bb673, #1e8e5a);
   color: white;
-  font-size: 16px;
+
+  font-size: 15px;
+  font-weight: 600;
+
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 8px 20px rgba(43, 182, 115, 0.5);
 }
 
+/* Hover */
 .auth-container button:hover {
-  background: #18794e;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(43, 182, 115, 0.7);
+}
+
+/* Click effect */
+.auth-container button:active {
+  transform: scale(0.98);
 }
 
 /* ===== LINKS ===== */
 .auth-container p {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 18px;
+  color: #ffffff;
+  font-size: 14px;
 }
 
 .auth-container a {
-  color: #1e8e5a;
+  color: #2bb673;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .auth-container a:hover {
   text-decoration: underline;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 480px) {
   .auth-container {
-    padding: 30px 20px;
+    padding: 35px 25px;
   }
 }
 
-/* ===== ANIMATION ===== */
+/* ===== ENTRY ANIMATION ===== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
