@@ -5,23 +5,15 @@
   box-sizing: border-box;
 }
 
-/* ===== FULL SCREEN BACKGROUND ===== */
-html, body {
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
+/* ===== BACKGROUND ===== */
 body {
+  margin: 0;
+  font-family: Arial, sans-serif;
   min-height: 100vh;
 
-  /* Waterfall Background */
   background: url("https://raw.githubusercontent.com/revatigade08/Herbipedia/main/images/kifoku-waterfall-21666_512.gif") 
               no-repeat center center fixed;
   background-size: cover;
-
-  display: flex;
-  justify-content: center;   /* Horizontal Center */
-  align-items: center;       /* Vertical Center */
 }
 
 /* ===== DARK OVERLAY ===== */
@@ -33,13 +25,16 @@ body::before {
   z-index: -1;
 }
 
-/* ===== CENTER WRAPPER ===== */
+/* ===== CENTER USING ABSOLUTE POSITION ===== */
 .auth-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
+  padding: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
 
 /* ===== FORM CONTAINER ===== */
@@ -52,7 +47,6 @@ body::before {
   width: 100%;
   max-width: 380px;
   animation: fadeIn 0.6s ease-in-out;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* ===== HEADING ===== */
@@ -84,18 +78,14 @@ body::before {
 /* ===== PASSWORD WRAPPER ===== */
 .password-wrapper {
   position: relative;
-  width: 100%;
 }
 
-/* Eye icon */
 .eye-icon {
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  font-size: 16px;
-  user-select: none;
 }
 
 /* ===== BUTTON ===== */
@@ -113,7 +103,6 @@ body::before {
 
 .auth-container button:hover {
   background: #18794e;
-  transform: translateY(-2px);
 }
 
 /* ===== LINKS ===== */
@@ -128,25 +117,8 @@ body::before {
   font-weight: bold;
 }
 
-.auth-container a:hover {
-  text-decoration: underline;
-}
-
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 480px) {
-  .auth-container {
-    padding: 30px 20px;
-  }
-}
-
 /* ===== ANIMATION ===== */
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
