@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register - Herbipedia</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+  <h2>Register</h2>
+
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="Full Name" required><br><br>
+
+    <input type="text" id="username" placeholder="Username" required><br><br>
+
+    <input type="text" id="contact" placeholder="Contact Number" required><br><br>
+
+    <input type="email" id="email" placeholder="Email" required><br><br>
+
+    <input type="password" id="password" placeholder="Password" required><br><br>
+
+    <label>Gender:</label>
+    <select id="gender" required>
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select><br><br>
+
+    <label>Date of Birth:</label>
+    <input type="date" id="dob" required><br><br>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account?
+    <a href="login.html">Login here</a>
+  </p>
+
+  <script type="module">
+    import { auth, db } from "./js/firebase-config.js";
+    import { createUserWithEmailAndPassword }
+      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+    import { doc, setDoc, serverTimestamp }
+      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const username = document.getElementById("username").value;
+      const contact = document.getElementById("contact").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const gender = document.getElementById("gender").value;
+      const dob = document.getElementById("dob").value;
+
+      try {
+        const userCredential =
+          await createUserWithEmailAndPassword(auth, email, password);
+
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "users", user.uid), {
+          name,
+          username,
+          contact,
+          email,
+          gender,
+          dob,
+          createdAt: serverTimestamp()
+        });
+
+        alert("Registration successful!");
+        window.location.href = "login.html";
+
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+  </script>
+
+</body>
+</html>
