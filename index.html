@@ -504,5 +504,33 @@
 
   </section> -->
 
+<script type="module">
+  import { auth } from "./js/firebase-config.js";
+  import { onAuthStateChanged, signOut }
+    from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  const navLogin = document.getElementById("navLogin");
+  const navRegister = document.getElementById("navRegister");
+  const navLogout = document.getElementById("navLogout");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      navLogin.style.display = "none";
+      navRegister.style.display = "none";
+      navLogout.style.display = "inline";
+    } else {
+      navLogin.style.display = "inline";
+      navRegister.style.display = "inline";
+      navLogout.style.display = "none";
+    }
+  });
+
+  navLogout.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "index.html";
+  });
+</script>
+
+  
 </body>
 </html>
