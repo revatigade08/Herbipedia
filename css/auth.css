@@ -1,18 +1,30 @@
-/* ===== Background ===== */
-body {
+/* ===== RESET ===== */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== FULL SCREEN BACKGROUND ===== */
+html, body {
+  height: 100%;
   font-family: Arial, sans-serif;
+}
+
+body {
   min-height: 100vh;
 
   /* Waterfall Background */
-  background: url("https://raw.githubusercontent.com/revatigade08/Herbipedia/main/images/kifoku-waterfall-21666_512.gif") no-repeat center center fixed;
+  background: url("https://raw.githubusercontent.com/revatigade08/Herbipedia/main/images/kifoku-waterfall-21666_512.gif") 
+              no-repeat center center fixed;
   background-size: cover;
 
   display: flex;
-  flex-direction: column;
+  justify-content: center;   /* Horizontal Center */
+  align-items: center;       /* Vertical Center */
 }
 
-/* Dark overlay for readability */
+/* ===== DARK OVERLAY ===== */
 body::before {
   content: "";
   position: fixed;
@@ -21,16 +33,16 @@ body::before {
   z-index: -1;
 }
 
-/* ===== Center Wrapper ===== */
+/* ===== CENTER WRAPPER ===== */
 .auth-wrapper {
-  flex: 1;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
-/* ===== Form Container ===== */
+/* ===== FORM CONTAINER ===== */
 .auth-container {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -43,24 +55,23 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Heading ===== */
+/* ===== HEADING ===== */
 .auth-container h2 {
   text-align: center;
   margin-bottom: 25px;
   color: #1e8e5a;
 }
 
-/* ===== Inputs ===== */
+/* ===== INPUTS ===== */
 .auth-container input,
 .auth-container select {
   width: 100%;
-  padding: 12px 45px 12px 12px; /* space for eye icon */
+  padding: 12px 45px 12px 12px;
   margin-bottom: 15px;
   border-radius: 10px;
   border: 1px solid #ddd;
   font-size: 14px;
   transition: 0.3s;
-  box-sizing: border-box;
 }
 
 .auth-container input:focus,
@@ -70,7 +81,7 @@ body::before {
   box-shadow: 0 0 8px rgba(43, 182, 115, 0.4);
 }
 
-/* ===== Password Wrapper ===== */
+/* ===== PASSWORD WRAPPER ===== */
 .password-wrapper {
   position: relative;
   width: 100%;
@@ -80,14 +91,14 @@ body::before {
 .eye-icon {
   position: absolute;
   right: 12px;
-  top: 35%;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 16px;
   user-select: none;
 }
 
-/* ===== Button ===== */
+/* ===== BUTTON ===== */
 .auth-container button {
   width: 100%;
   padding: 12px;
@@ -105,7 +116,7 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* ===== Links ===== */
+/* ===== LINKS ===== */
 .auth-container p {
   text-align: center;
   margin-top: 15px;
@@ -117,15 +128,25 @@ body::before {
   font-weight: bold;
 }
 
-/* ===== Mobile Responsive ===== */
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 480px) {
   .auth-container {
     padding: 30px 20px;
   }
 }
 
-/* ===== Animation ===== */
+/* ===== ANIMATION ===== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
