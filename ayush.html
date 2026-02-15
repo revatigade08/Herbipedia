@@ -434,27 +434,29 @@
         <input type="text" id="search-input" placeholder="Search for a plant...">
         <button onclick="filterPlants()">Search</button>
 
+
+        
         <div class="filter-container">
             <button class="filter-btn" id="filterBtn">
                 Filter ▼
             </button>
 
-            <div class="filter-dropdown" id="filterDropdown">
-                <div data-value="all">All</div>
-                <div data-value="health">Culinary</div>
-                <div data-value="skincare">Skincare</div>
-                <div data-value="haircare">Haircare</div>
-                <div data-value="cosmetics">Cosmetics</div>
-                <div data-value="Digestion">Digestion</div>
-                <div data-value="DentalCare">Dental care</div>
-                <div data-value="Immunity">Immunity</div>
-                <div data-value="Respiratory support">Respiratory support</div>
-                <div data-value="Blood sugar control">Blood sugar control</div>
-                <div data-value="perfumes">Perfumes</div>
-                <div data-value="Spritiual rituals">Spiritual rituals</div>
-            </div>
-        </div>
+    <div class="filter-dropdown">
+        <div data-value="all">All</div>
+        <div data-value="culinary">Culinary</div>
+        <div data-value="skincare">Skincare</div>
+        <div data-value="haircare">Haircare</div>
+        <div data-value="cosmetics">Cosmetics</div>
+        <div data-value="digestion">Digestion</div>
+        <div data-value="dentalcare">Dental care</div>
+        <div data-value="immunity">Immunity</div>
+        <div data-value="respiratory">Respiratory support</div>
+        <div data-value="bloodsugar">Blood sugar control</div>
+        <div data-value="perfumes">Perfumes</div>
+        <div data-value="spiritual">Spiritual rituals</div>
     </div>
+</div>
+
 </div>
 
 
@@ -469,16 +471,6 @@
             
             <!--Revati is working here  -->
 
-            <div style="margin-bottom:20px;">
-    <select id="filterCategory" onchange="filterPlants()">
-        <option value="all">All Plants</option>
-        <option value="skin-care">Skincare</option>
-        <option value="digestion">Digestion</option>
-        <option value="immunity">Immunity</option>
-        <option value="stress">Stress Relief</option>
-        <option value="nutrition">Nutrition</option>
-    </select>
-</div>
 
             
             <!-- Neem Plant -->
@@ -786,28 +778,49 @@ document.addEventListener("click", function () {
 
 
 
-    
 
-    <script>
-function filterPlants() {
-    const selected = document.getElementById("filterCategory").value;
+     
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const filterBtn = document.getElementById("filterBtn");
+    const dropdown = document.querySelector(".filter-dropdown");
+    const options = document.querySelectorAll(".filter-dropdown div");
+
+    filterBtn.addEventListener("click", function () {
+        dropdown.classList.toggle("show");
+    });
+
+    options.forEach(option => {
+        option.addEventListener("click", function () {
+            const selectedCategory = this.getAttribute("data-value");
+            filterPlants(selectedCategory);
+            dropdown.classList.remove("show");
+        });
+    });
+
+});
+
+function filterPlants(selectedCategory = "all") {
     const plants = document.querySelectorAll(".model-container");
 
-    plants.forEach(function(plant) {
-        const category = plant.getAttribute("data-category");
+    plants.forEach(function (plant) {
+        const category = plant.getAttribute("data-category") || "";
 
-        if (selected === "all") {
+        if (
+            selectedCategory === "all" ||
+            category.toLowerCase().split(" ").includes(selectedCategory)
+        ) {
             plant.style.display = "block";
-        } 
-        else if (category && category.split(" ").includes(selected)) {
-            plant.style.display = "block";
-        } 
-        else {
+        } else {
             plant.style.display = "none";
         }
     });
 }
 </script>
+
+   
 
 
 
