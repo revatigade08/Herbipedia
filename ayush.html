@@ -814,7 +814,7 @@ function filterPlants(selectedCategory = "all") {
             selectedCategory === "all" ||
             category.toLowerCase().split(" ").includes(selectedCategory)
         ) {
-            plant.style.display = "block";
+            plant.style.display = "";
         } else {
             plant.style.display = "none";
         }
