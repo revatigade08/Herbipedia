@@ -474,12 +474,12 @@
 
             
             <!-- Neem Plant -->
-            <div class="model-container" data-category="Immunity Skincare">
+            <div class="model-container" data-category="immunity skincare">
                 <model-viewer src="models/neem.glb" alt="Neem Plant" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/neem.html'">Click for Neem Info</button>
             </div>
             <!-- Tulsi Plant -->
-            <div class="model-container">
+            <div class="model-container" data-category="immunity respiratory">
                 <model-viewer src="models/tulsi.glb" alt="Tulsi Plant" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/tulsi.html'">Click for Tulsi Info</button>
             </div>
@@ -488,7 +488,7 @@
                 <model-viewer src="models/periwinkle.glb" alt="Peri Winkle" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/periwinkle.html'">Click for Peri Winkle Info</button>
             </div>
-            <div class="model-container">
+            <div class="model-container" data-category="digestion immunity">
                 <model-viewer src="models/ginger_root.glb" alt="Ginger Root" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/ginger.html'">Click for Ginger Root Info</button>
             </div>
@@ -496,7 +496,7 @@
                 <model-viewer src="models/ashwagandha.glb" alt="Ashwagandha" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/ashwagandha.html'">Click for Ashwagandha Info</button>
             </div>
-            <div class="model-container">
+            <div class="model-container" data-category="skincare cosmetics">
                 <model-viewer src="models/aloe_vera.glb" alt="Aloe Vera Plant" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/aloevera.html'">Click for Aloe Vera Info</button>
             </div>
@@ -746,60 +746,65 @@
 
         
 
-        // ================= FILTER DROPDOWN LOGIC =================
-const filterBtn = document.getElementById("filterBtn");
-const filterDropdown = document.getElementById("filterDropdown");
+//         // ================= FILTER DROPDOWN LOGIC =================
+// const filterBtn = document.getElementById("filterBtn");
+// const filterDropdown = document.getElementById("filterDropdown");
 
-// Toggle dropdown on button click
-filterBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    filterDropdown.style.display =
-        filterDropdown.style.display === "block" ? "none" : "block";
-});
+// // Toggle dropdown on button click
+// filterBtn.addEventListener("click", function (e) {
+//     e.stopPropagation();
+//     filterDropdown.style.display =
+//         filterDropdown.style.display === "block" ? "none" : "block";
+// });
 
-// Handle filter option click
-document.querySelectorAll(".filter-dropdown div").forEach(item => {
-    item.addEventListener("click", function () {
-        const value = this.getAttribute("data-value");
-        filterBtn.innerHTML = this.innerText + " ▼";
-        filterDropdown.style.display = "none";
-        filterPlants(value); // optional filtering hook
-    });
-});
+// // Handle filter option click
+// document.querySelectorAll(".filter-dropdown div").forEach(item => {
+//     item.addEventListener("click", function () {
+//         const value = this.getAttribute("data-value");
+//         filterBtn.innerHTML = this.innerText + " ▼";
+//         filterDropdown.style.display = "none";
+//         filterPlants(value); // optional filtering hook
+//     });
+// });
 
-// Close dropdown when clicking outside
-document.addEventListener("click", function () {
-    filterDropdown.style.display = "none";
-});
+// // Close dropdown when clicking outside
+// document.addEventListener("click", function () {
+//     filterDropdown.style.display = "none";
+// });
         
-    </script>
+//     </script>
     <script src="//code.tidio.co/jkz58qnv5cjqlyh3azdphziunrt9qhu.js" async></script>
 
 
 
 
 
-     
+<script>     
     
-<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const filterBtn = document.getElementById("filterBtn");
     const dropdown = document.querySelector(".filter-dropdown");
     const options = document.querySelectorAll(".filter-dropdown div");
 
-    filterBtn.addEventListener("click", function () {
-        dropdown.classList.toggle("show");
+    filterBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdown.style.display =
+            dropdown.style.display === "block" ? "none" : "block";
     });
 
     options.forEach(option => {
         option.addEventListener("click", function () {
             const selectedCategory = this.getAttribute("data-value");
+            filterBtn.innerHTML = this.innerText + " ▼";
             filterPlants(selectedCategory);
-            dropdown.classList.remove("show");
+            dropdown.style.display = "none";
         });
     });
 
+    document.addEventListener("click", function () {
+        dropdown.style.display = "none";
+    });
 });
 
 function filterPlants(selectedCategory = "all") {
@@ -818,8 +823,8 @@ function filterPlants(selectedCategory = "all") {
         }
     });
 }
-</script>
 
+</script>
    
 
 
