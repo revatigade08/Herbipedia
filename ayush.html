@@ -465,8 +465,24 @@
     <main>
         <h2>Explore the Plants in 3D</h2>
         <div class="plant-viewer" id="plant-viewer">
+
+            
+            <!--Revati is working here  -->
+
+            <div style="margin-bottom:20px;">
+    <select id="filterCategory" onchange="filterPlants()">
+        <option value="all">All Plants</option>
+        <option value="skin-care">Skin Care</option>
+        <option value="digestion">Digestion</option>
+        <option value="immunity">Immunity</option>
+        <option value="stress">Stress Relief</option>
+        <option value="nutrition">Nutrition</option>
+    </select>
+</div>
+
+            
             <!-- Neem Plant -->
-            <div class="model-container">
+            <div class="model-container" data-category="immunity skin-care">
                 <model-viewer src="models/neem.glb" alt="Neem Plant" auto-rotate camera-controls></model-viewer>
                 <button class="info-button" onclick="window.location.href='Plants/neem.html'">Click for Neem Info</button>
             </div>
@@ -766,5 +782,35 @@ document.addEventListener("click", function () {
         
     </script>
     <script src="//code.tidio.co/jkz58qnv5cjqlyh3azdphziunrt9qhu.js" async></script>
+
+
+
+
+    
+
+    <script>
+function filterPlants() {
+    const selected = document.getElementById("filterCategory").value;
+    const plants = document.querySelectorAll(".model-container");
+
+    plants.forEach(function(plant) {
+        const category = plant.getAttribute("data-category");
+
+        if (selected === "all") {
+            plant.style.display = "block";
+        } else if (category.includes(selected)) {
+            plant.style.display = "block";
+        } else {
+            plant.style.display = "none";
+        }
+    });
+}
+</script>
+
+
+
+
+
+    
 </body>
 </html>
