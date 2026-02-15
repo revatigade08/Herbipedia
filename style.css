@@ -126,7 +126,7 @@ button[type="submit"]:hover {
 
 
 /* Chat Icon */
-#chat-icon {
+/* #chat-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -145,7 +145,7 @@ button[type="submit"]:hover {
 }
 
 /* Chat Container */
-#chat-container {
+/* #chat-container {
     position: fixed;
     bottom: 90px;
     right: 20px;
@@ -158,10 +158,10 @@ button[type="submit"]:hover {
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     overflow: hidden;
     z-index: 9999;
-}
+} */
 
 /* Chat Header */
-#chat-header {
+/* #chat-header {
     background-color: #2e7d32;
     color: white;
     padding: 10px;
@@ -180,7 +180,7 @@ button[type="submit"]:hover {
 
 #chat-container iframe {
     flex: 1;
-}
+} */ 
 
 
 
