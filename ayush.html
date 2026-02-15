@@ -804,22 +804,51 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function filterPlants(selectedCategory = "all") {
+// function filterPlants(selectedCategory = "all") {
+//     const plants = document.querySelectorAll(".model-container");
+
+//     plants.forEach(function (plant) {
+//         const category = plant.getAttribute("data-category") || "";
+
+//         if (
+//             selectedCategory === "all" ||
+//             category.toLowerCase().split(" ").includes(selectedCategory)
+//         ) {
+//             plant.style.display = "";
+//         } else {
+//             plant.style.display = "none";
+//         }
+//     });
+// }
+
+
+
+
+    function filterPlants(selectedCategory = "all") {
+
     const plants = document.querySelectorAll(".model-container");
 
     plants.forEach(function (plant) {
-        const category = plant.getAttribute("data-category") || "";
 
-        if (
-            selectedCategory === "all" ||
-            category.toLowerCase().split(" ").includes(selectedCategory)
-        ) {
+        const category = plant.getAttribute("data-category") || "";
+        const categoriesArray = category.toLowerCase().trim().split(/\s+/);
+
+        if (selectedCategory === "all") {
             plant.style.display = "";
-        } else {
+        }
+        else if (categoriesArray.includes(selectedCategory.trim().toLowerCase())) {
+            plant.style.display = "";
+        }
+        else {
             plant.style.display = "none";
         }
+
     });
 }
+
+
+
+    
 
 </script>
    
