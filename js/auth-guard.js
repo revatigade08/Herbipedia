@@ -111,3 +111,4 @@ onAuthStateChanged(auth, (user) => {
     }
   }
 });
+console.log("Auth Guard Loaded");
