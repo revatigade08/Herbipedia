@@ -185,5 +185,5 @@ body::before {
     transform: translateY(0);
   }
 }
-console.log("Auth Guard Loaded");
+
 
