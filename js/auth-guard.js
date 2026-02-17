@@ -1,8 +1,6 @@
 import { auth } from "./firebase-config.js";
-import { onAuthStateChanged, signOut } 
+import { onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-
-console.log("Auth Guard Loaded");
 
 const publicPages = ["index.html", "login.html", "register.html"];
 
@@ -13,22 +11,23 @@ function isPublicPage() {
 
 onAuthStateChanged(auth, (user) => {
 
-  console.log("User state:", user);
-
-  // If not logged in and page is protected → redirect
+  // If not logged in and page is protected
   if (!user && !isPublicPage()) {
     window.location.replace("/Herbipedia/index.html");
     return;
   }
 
-  // If logged in and tries to open login/register → redirect to dashboard
+  // If logged in and trying to access login/register
   if (user && (window.location.pathname.includes("login.html") ||
                window.location.pathname.includes("register.html"))) {
-    window.location.replace("/Herbipedia/dashboard.html"); 
+    window.location.replace("/Herbipedia/about.html"); // change if needed
     return;
   }
 
-  // Create logout button only if logged in
+  // Show page after auth check
+  document.body.style.display = "flex";
+
+  // Add logout button only if logged in
   if (user && !document.getElementById("floatingLogout")) {
 
     const btn = document.createElement("div");
@@ -38,8 +37,6 @@ onAuthStateChanged(auth, (user) => {
       <i class="fas fa-arrow-right"></i>
       <span>Logout</span>
     `;
-
-    document.body.appendChild(btn);
 
     Object.assign(btn.style, {
       position: "fixed",
@@ -59,9 +56,19 @@ onAuthStateChanged(auth, (user) => {
       transition: "0.3s"
     });
 
+    btn.addEventListener("mouseenter", () => {
+      btn.style.background = "#e8f5e9";
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      btn.style.background = "#ffffff";
+    });
+
     btn.addEventListener("click", async () => {
       await signOut(auth);
       window.location.replace("/Herbipedia/index.html");
     });
+
+    document.body.appendChild(btn);
   }
 });
