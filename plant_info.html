@@ -3,30 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herbipedia</title>
+    <title>Herbipedia - Plant Info</title>
+
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- 3D Model Viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <button class="toggle-theme" onclick="toggleTheme()">Change Theme</button>
 
     <style>
 /* ===== Reset & Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url('https://cur.cursors-4u.net/nature/nat-11/nat1057.cur'), auto;
   font-family: 'Inter', sans-serif;
-  /* cursor: url("http://www.rw-designer.com/cursor-extern.php?id=51983") 16 16, auto;   */
+}
+
+/* ===== Navbar ===== */
+#navbar {
+  display: flex;
+  gap: 20px;
+  padding: 15px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#navbar a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+#navbar a:hover {
+  color: #1B5E20;
 }
 
 /* ===== Body Theme ===== */
 body {
   background: linear-gradient(130deg, #d1f2eb, #a9dfbf);
   color: #145a32;
-  overflow: hidden;
-  position: relative;
   min-height: 100vh;
   padding: 40px;
   transition: background 0.5s ease;
@@ -37,94 +57,44 @@ body.dark-mode {
   color: #d0f0c0;
 }
 
-/* ===== Planty Particles ===== */
-body::before {
-  content: '';
-  position: fixed;
-  top: -50px;
-  left: -50px;
-  width: 200%;
-  height: 200%;
-  background: url('https://cdn.pixabay.com/photo/2017/01/31/18/52/leaf-2023161_1280.png') repeat;
-  opacity: 0.03;
-  animation: floatParticles 60s linear infinite;
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes floatParticles {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-500px, -500px); }
-}
-
 /* ===== Layout ===== */
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 60px;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  position: relative;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
-body.dark-mode .container {
-  background: rgba(50, 50, 50, 0.4);
-}
-
-/* ===== Info Panel ===== */
+/* ===== Plant Info ===== */
 #plant-info {
-  flex: 1;
   max-width: 500px;
 }
 
 #plant-info h3 {
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  color: #1e8449;
-}
-
-body.dark-mode #plant-info h3 {
-  color: #76d7c4;
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
 #plant-info p {
-  font-size: 1.1rem;
-  margin: 12px 0;
+  margin: 10px 0;
   line-height: 1.6;
 }
 
-#plant-info strong {
-  color: #27ae60;
-}
-
-body.dark-mode #plant-info strong {
-  color: #82e0aa;
-}
-
-/* ===== 3D Model Viewer ===== */
+/* ===== Model Viewer ===== */
 model-viewer {
-  width: 500px;
-  height: 500px;
-  border-radius: 20px;
+  width: 350px;
+  height: 350px;
+  border-radius: 15px;
   background-color: #eafaf1;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-  border: 3px solid #a2d9ce;
-}
-
-body.dark-mode model-viewer {
-  background-color: #1c2833;
-  border-color: #45b39d;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* ===== Toggle Button ===== */
 .toggle-theme {
   position: fixed;
-  top: 25px;
+  top: 80px;
   right: 25px;
   padding: 10px 18px;
   background: #27ae60;
@@ -132,59 +102,47 @@ body.dark-mode model-viewer {
   border: none;
   border-radius: 25px;
   font-weight: 600;
-  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-  z-index: 999;
+  cursor: pointer;
 }
-
-body.dark-mode .toggle-theme {
-  background: #1abc9c;
-  color: #1b1b1b;
-}
-
-/* ===== Responsive Fix ===== */
-@media (max-width: 1000px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 40px;
-  }
-
-  model-viewer {
-    width: 100%;
-    height: 400px;
-  }
-
-  #plant-info {
-    max-width: 100%;
-  }
-}
-
-
     </style>
 </head>
-<body class="loaded">
-   
 
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;">
-        <!-- 3D Model Viewer -->
-        <model-viewer id="plant-model" alt="Plant Model" auto-rotate camera-controls 
-                      style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        </model-viewer>
-    
-        <!-- Plant Info Display -->
-        <div id="plant-info" style="max-width: 500px;">
-            <h3 id="plant-name"></h3>
-            <p><strong>Location:</strong> <span id="plant-location"></span></p>
-            <p><strong>Global Spread:</strong> <span id="plant-spread"></span></p>
-            <p><strong>Preferred Climate:</strong> <span id="plant-climate"></span></p>
-            <p><strong>History:</strong> <span id="plant-history"></span></p>
-            <p><strong>Medical Uses:</strong> <span id="plant-uses"></span></p>
-        </div>
+<body>
+
+<!-- ✅ Standardized Navbar -->
+<nav id="navbar">
+  <a href="index.html" id="navHome"><i class="fas fa-home"></i> Home</a>
+  <a href="ayush.html" id="nav3D"><i class="fas fa-cube"></i> 3D Plants</a>
+  <a href="about.html" id="navAbout"><i class="fas fa-users"></i> About Us</a>
+  <a href="contact.html" id="navContact"><i class="fas fa-envelope"></i> Contact Us</a>
+  <a href="login.html" id="navLogin"><i class="fas fa-sign-in-alt"></i> Login</a>
+  <a href="register.html" id="navRegister"><i class="fas fa-user-plus"></i> Register</a>
+  <a href="#" id="navLogout" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</nav>
+
+<!-- Toggle Button -->
+<button class="toggle-theme" onclick="toggleTheme()">Change Theme</button>
+
+<!-- Main Content -->
+<div class="container">
+
+    <model-viewer id="plant-model" alt="Plant Model"
+        auto-rotate camera-controls>
+    </model-viewer>
+
+    <div id="plant-info">
+        <h3 id="plant-name"></h3>
+        <p><strong>Location:</strong> <span id="plant-location"></span></p>
+        <p><strong>Global Spread:</strong> <span id="plant-spread"></span></p>
+        <p><strong>Preferred Climate:</strong> <span id="plant-climate"></span></p>
+        <p><strong>History:</strong> <span id="plant-history"></span></p>
+        <p><strong>Medical Uses:</strong> <span id="plant-uses"></span></p>
     </div>
-    
-    <script>
-        const modelMap = {
+
+</div>
+
+<script>
+const modelMap = {
     "Neem": "models/neem.glb",
     "Tulsi": "models/tulsi.glb",
     "Aloe Vera": "models/aloe_vera_plant.glb",
@@ -202,13 +160,15 @@ body.dark-mode .toggle-theme {
     "Orchid": "models/orchid.glb",
     "Hibiscus": "models/habiscus.glb",
     "Calendula": "models/orange.glb",
-    
 };
+
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
-  }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     const plantInfo = JSON.parse(localStorage.getItem("plantInfo"));
+
     if (plantInfo) {
         document.getElementById("plant-name").textContent = plantInfo.name;
         document.getElementById("plant-location").textContent = plantInfo.location;
@@ -217,22 +177,18 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("plant-history").textContent = plantInfo.history;
         document.getElementById("plant-uses").textContent = plantInfo.medical_uses;
 
-        // Set model source dynamically
         const modelViewer = document.getElementById("plant-model");
         if (modelMap[plantInfo.name]) {
             modelViewer.src = modelMap[plantInfo.name];
         } else {
-            modelViewer.style.display = "none"; // Hide model if not available
+            modelViewer.style.display = "none";
         }
-       
- 
-
     }
 });
+</script>
 
-    </script>
-    <script type="module" src="js/auth-guard.js"></script>
-
+<!-- Auth Guard -->
+<script type="module" src="js/auth-guard.js"></script>
 
 </body>
 </html>
