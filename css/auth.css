@@ -31,69 +31,50 @@ body::before {
   z-index: -1;
 }
 
-/* ===== PREMIUM GLASS CONTAINER ===== */
+/* ===== FORM CONTAINER ===== */
 .auth-container {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
   padding: 45px 40px;
-  border-radius: 22px;
-
+  border-radius: 20px;
   width: 90%;
-  max-width: 390px;
+  max-width: 400px;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.6),
-    inset 0 0 15px rgba(255, 255, 255, 0.08);
-
-  animation: fadeIn 0.8s ease;
-  transition: transform 0.3s ease;
-}
-
-/* Subtle floating hover */
-.auth-container:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.7s ease;
 }
 
 /* ===== HEADING ===== */
 .auth-container h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #ffffff;
-  font-weight: 600;
+  color: #1a1a1a;   /* Metallic black */
+  font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-/* ===== INPUT FIELDS ===== */
+/* ===== INPUTS & SELECT ===== */
 .auth-container input,
 .auth-container select {
   width: 100%;
-  padding: 14px 45px 14px 14px;
+  padding: 14px 16px;
   margin-bottom: 18px;
 
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #ccc;
 
-  background: rgba(255, 255, 255, 0.9);  /* solid background */
-  color: #333;  /* dark text for readability */
+  background: #ffffff;              /* Solid white */
+  color: #1a1a1a;                    /* Metallic black */
+  font-weight: 600;                  /* Bold text */
 
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
-/* Fix dropdown options visibility */
-.auth-container select option {
-  background: #ffffff;
-  color: #333;
-}
-
-
-/* Placeholder styling */
+/* Placeholder style */
 .auth-container input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: #555;
+  font-weight: 500;
 }
 
 /* Focus effect */
@@ -101,8 +82,18 @@ body::before {
 .auth-container select:focus {
   outline: none;
   border-color: #2bb673;
-  box-shadow: 0 0 15px rgba(43, 182, 115, 0.6);
-  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(43, 182, 115, 0.5);
+}
+
+/* Fix dropdown options visibility */
+.auth-container select option {
+  color: #000;
+  background: #fff;
+}
+
+/* Fix date input visibility */
+.auth-container input[type="date"] {
+  color: #1a1a1a;
 }
 
 /* ===== PASSWORD WRAPPER ===== */
@@ -116,11 +107,11 @@ body::before {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #ffffff;
+  color: #1a1a1a;
   font-size: 16px;
 }
 
-/* ===== PREMIUM BUTTON ===== */
+/* ===== BUTTON ===== */
 .auth-container button {
   width: 100%;
   padding: 14px;
@@ -131,21 +122,19 @@ body::before {
   color: white;
 
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
   transition: all 0.3s ease;
 
-  box-shadow: 0 8px 20px rgba(43, 182, 115, 0.5);
+  box-shadow: 0 10px 25px rgba(43, 182, 115, 0.6);
 }
 
-/* Hover */
 .auth-container button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(43, 182, 115, 0.7);
+  box-shadow: 0 15px 35px rgba(43, 182, 115, 0.7);
 }
 
-/* Click effect */
 .auth-container button:active {
   transform: scale(0.98);
 }
@@ -154,14 +143,14 @@ body::before {
 .auth-container p {
   text-align: center;
   margin-top: 18px;
-  color: #ffffff;
-  font-size: 14px;
+  color: #333;
+  font-weight: 500;
 }
 
 .auth-container a {
-  color: #2bb673;
+  color: #1e8e5a;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .auth-container a:hover {
@@ -175,7 +164,7 @@ body::before {
   }
 }
 
-/* ===== ENTRY ANIMATION ===== */
+/* ===== ANIMATION ===== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -185,23 +174,4 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
-}
-/* Date label */
-.dob-label {
-  display: block;
-  margin-bottom: 6px;
-  color: #ffffff;
-  font-size: 13px;
-}
-
-/* Fix date input text visibility */
-.auth-container input[type="date"] {
-  color: #333;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-/* Improve calendar icon visibility (Chrome) */
-.auth-container input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0);
-  cursor: pointer;
 }
