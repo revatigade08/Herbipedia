@@ -3,13 +3,26 @@ import { onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 const publicPages = ["index.html", "login.html", "register.html"];
+const authPages = ["login.html", "register.html"];
+
+function getCurrentPage() {
+  return window.location.pathname.split("/").pop();
+}
 
 function isPublicPage() {
-  const page = window.location.pathname.split("/").pop();
+  const page = getCurrentPage();
   return publicPages.includes(page) || page === "";
 }
 
 onAuthStateChanged(auth, (user) => {
+
+  const page = getCurrentPage();
+  const navbar = document.getElementById("navbar");
+
+  // 🔹 Hide entire navbar on login/register
+  if (authPages.includes(page) && navbar) {
+    navbar.style.display = "none";
+  }
 
   const nav3D = document.getElementById("nav3D");
   const navAbout = document.getElementById("navAbout");
@@ -20,17 +33,14 @@ onAuthStateChanged(auth, (user) => {
 
   if (!user) {
 
-    // Redirect if trying to access restricted page
     if (!isPublicPage()) {
       window.location.replace("index.html");
       return;
     }
 
-    // Show public links
     if (navLogin) navLogin.style.display = "inline-block";
     if (navRegister) navRegister.style.display = "inline-block";
 
-    // Hide restricted links
     if (nav3D) nav3D.style.display = "none";
     if (navAbout) navAbout.style.display = "none";
     if (navContact) navContact.style.display = "none";
@@ -38,17 +48,14 @@ onAuthStateChanged(auth, (user) => {
 
   } else {
 
-    // Hide login/register
     if (navLogin) navLogin.style.display = "none";
     if (navRegister) navRegister.style.display = "none";
 
-    // Show restricted links
     if (nav3D) nav3D.style.display = "inline-block";
     if (navAbout) navAbout.style.display = "inline-block";
     if (navContact) navContact.style.display = "inline-block";
     if (navLogout) navLogout.style.display = "inline-block";
 
-    // Logout functionality
     if (navLogout) {
       navLogout.addEventListener("click", async (e) => {
         e.preventDefault();
