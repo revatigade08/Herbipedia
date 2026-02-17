@@ -77,12 +77,19 @@ body::before {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.25);
 
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.9);  /* solid background */
+  color: #333;  /* dark text for readability */
 
   font-size: 14px;
   transition: all 0.3s ease;
 }
+
+/* Fix dropdown options visibility */
+.auth-container select option {
+  background: #ffffff;
+  color: #333;
+}
+
 
 /* Placeholder styling */
 .auth-container input::placeholder {
@@ -178,4 +185,23 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* Date label */
+.dob-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+/* Fix date input text visibility */
+.auth-container input[type="date"] {
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Improve calendar icon visibility (Chrome) */
+.auth-container input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+  cursor: pointer;
 }
