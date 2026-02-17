@@ -53,31 +53,40 @@ body::before {
   letter-spacing: 0.5px;
 }
 
-/* ===== INPUTS & SELECT ===== */
+/* ===== INPUTS & SELECT (UNIFIED STYLING) ===== */
 .auth-container input,
 .auth-container select {
   width: 100%;
-  padding: 14px 16px;
+  height: 48px;                 /* Force same height */
+  padding: 0 16px;              /* Remove vertical padding */
   margin-bottom: 18px;
 
   border-radius: 12px;
   border: 1px solid #ccc;
 
-  background: #ffffff;              /* Solid white */
-  color: #1a1a1a;                    /* Metallic black */
-  font-weight: 600;                  /* Bold text */
-
+  background: #ffffff;
+  color: #1a1a1a;               /* Metallic black */
+  font-weight: 600;
   font-size: 14px;
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  appearance: none;             /* Remove browser styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   transition: all 0.3s ease;
 }
 
-/* Placeholder style */
-.auth-container input::placeholder {
-  color: #555;
-  font-weight: 500;
+/* Custom dropdown arrow */
+.auth-container select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%231a1a1a' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+  padding-right: 40px;
 }
 
-/* Focus effect */
+/* Focus state */
 .auth-container input:focus,
 .auth-container select:focus {
   outline: none;
@@ -85,10 +94,11 @@ body::before {
   box-shadow: 0 0 10px rgba(43, 182, 115, 0.5);
 }
 
-/* Fix dropdown options visibility */
+/* Dropdown options */
 .auth-container select option {
-  color: #000;
-  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 
 /* Fix date input visibility */
