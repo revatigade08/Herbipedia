@@ -4,7 +4,6 @@ from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 const publicPages = ["index.html", "login.html", "register.html"];
 const authPages = ["login.html", "register.html"];
-
 function getCurrentPage() {
   return window.location.pathname.split("/").pop();
 }
