@@ -4,24 +4,59 @@
   <title>Login - Herbipedia</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/auth.css">
+
+  <!-- Font Awesome (if not already included globally) -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body class="auth-page">
 
+  <!-- ✅ NAVBAR ADDED -->
+  <nav id="navbar">
+    <a href="index.html" id="navHome">
+      <i class="fas fa-home"></i> Home
+    </a>
+
+    <a href="ayush.html" id="nav3D">
+      <i class="fas fa-cube"></i> 3D Plants
+    </a>
+
+    <a href="about.html" id="navAbout">
+      <i class="fas fa-users"></i> About Us
+    </a>
+
+    <a href="contact.html" id="navContact">
+      <i class="fas fa-envelope"></i> Contact Us
+    </a>
+
+    <a href="login.html" id="navLogin">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </a>
+
+    <a href="register.html" id="navRegister">
+      <i class="fas fa-user-plus"></i> Register
+    </a>
+
+    <a href="#" id="navLogout" style="display:none;">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </nav>
+
+  <!-- AUTH FORM -->
   <div class="auth-container">
 
     <h2>Login</h2>
 
     <form id="loginForm">
-
       <input type="email" id="email" placeholder="Email" required>
 
-<div class="password-wrapper">
-    <input type="password" id="password" placeholder="Password" required>
-    <span id="togglePassword" class="eye-icon">👁</span>
-</div>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Password" required>
+        <span id="togglePassword" class="eye-icon">👁</span>
+      </div>
 
       <button type="submit">Login</button>
-
     </form>
 
     <p>New user?
@@ -30,8 +65,9 @@
 
   </div>
 
+  <!-- Scripts -->
+  <script type="module" src="js/auth-guard.js"></script>
   <script type="module" src="js/login.js"></script>
 
 </body>
-
 </html>
