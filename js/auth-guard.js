@@ -11,64 +11,50 @@ function isPublicPage() {
 
 onAuthStateChanged(auth, (user) => {
 
-  // If not logged in and page is protected
-  if (!user && !isPublicPage()) {
-    window.location.replace("/Herbipedia/index.html");
-    return;
-  }
+  const nav3D = document.getElementById("nav3D");
+  const navAbout = document.getElementById("navAbout");
+  const navContact = document.getElementById("navContact");
+  const navLogin = document.getElementById("navLogin");
+  const navRegister = document.getElementById("navRegister");
+  const navLogout = document.getElementById("navLogout");
 
-  // If logged in and trying to access login/register
-  if (user && (window.location.pathname.includes("login.html") ||
-               window.location.pathname.includes("register.html"))) {
-    window.location.replace("/Herbipedia/about.html"); // change if needed
-    return;
-  }
+  if (!user) {
 
-  // Show page after auth check
-  document.body.style.display = "flex";
+    // Redirect if trying to access restricted page
+    if (!isPublicPage()) {
+      window.location.replace("index.html");
+      return;
+    }
 
-  // Add logout button only if logged in
-  if (user && !document.getElementById("floatingLogout")) {
+    // Show public links
+    if (navLogin) navLogin.style.display = "inline-block";
+    if (navRegister) navRegister.style.display = "inline-block";
 
-    const btn = document.createElement("div");
-    btn.id = "floatingLogout";
-    btn.innerHTML = `
-      <i class="fas fa-home"></i>
-      <i class="fas fa-arrow-right"></i>
-      <span>Logout</span>
-    `;
+    // Hide restricted links
+    if (nav3D) nav3D.style.display = "none";
+    if (navAbout) navAbout.style.display = "none";
+    if (navContact) navContact.style.display = "none";
+    if (navLogout) navLogout.style.display = "none";
 
-    Object.assign(btn.style, {
-      position: "fixed",
-      top: "20px",
-      right: "20px",
-      padding: "8px 14px",
-      borderRadius: "30px",
-      background: "#ffffff",
-      color: "#2E7D32",
-      cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      gap: "6px",
-      fontWeight: "600",
-      boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-      zIndex: "9999",
-      transition: "0.3s"
-    });
+  } else {
 
-    btn.addEventListener("mouseenter", () => {
-      btn.style.background = "#e8f5e9";
-    });
+    // Hide login/register
+    if (navLogin) navLogin.style.display = "none";
+    if (navRegister) navRegister.style.display = "none";
 
-    btn.addEventListener("mouseleave", () => {
-      btn.style.background = "#ffffff";
-    });
+    // Show restricted links
+    if (nav3D) nav3D.style.display = "inline-block";
+    if (navAbout) navAbout.style.display = "inline-block";
+    if (navContact) navContact.style.display = "inline-block";
+    if (navLogout) navLogout.style.display = "inline-block";
 
-    btn.addEventListener("click", async () => {
-      await signOut(auth);
-      window.location.replace("/Herbipedia/index.html");
-    });
-
-    document.body.appendChild(btn);
+    // Logout functionality
+    if (navLogout) {
+      navLogout.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+        window.location.replace("index.html");
+      });
+    }
   }
 });
