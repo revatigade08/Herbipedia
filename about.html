@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Herbipedia</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --main-green: #3a6b4b;
@@ -13,150 +18,157 @@
       --background: #f9faf8;
       --white: #fff;
       --text-dark: #25362b;
-      --accent-yellow: #FFD700;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { overflow-x: hidden; height: 100vh;
-               cursor: url("http://www.rw-designer.com/cursor-extern.php?id=51983") 16 16, auto;}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Nunito', sans-serif;
       background: linear-gradient(135deg, #f9faf8 0%, #e0f2ee 100%);
       color: var(--text-dark);
-      opacity: 0;
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-    body.loaded { opacity: 1; }
+
+    /* ================= HEADER ================= */
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
+      padding: 1rem 2rem;
       background: linear-gradient(to right, #fff, #e0f7e9);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 999;
-      animation: slideDown 0.3s;
-      position: relative;
     }
+
     .logo {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .logo-text {
-      background: linear-gradient(90deg, #3a6b4b 0%, #6bbf59 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo i {
-      color: #4CAF50;
       font-size: 1.3rem;
-      display: inline-block;
-      transition: transform 0.2s;
+      font-weight: 700;
     }
-    .logo:hover i {
-      transform: rotate(-18deg) scale(1.18);
-      color: #6bbf59;
-    }
-    .brand-name { color: #2E7D32; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
-    .brand-name .highlight { color: #66BB6A; }
 
-    nav a {
-      position: relative;
-      text-decoration: none;
-      color: #25362b;
-      font-weight: 600;
-      padding: 7px 22px;
-      transition: color 0.3s;
-      font-family: 'Poppins', Arial, sans-serif;
-    }
-    nav a i {
-      margin-right: 6px;
+    .logo i {
       color: #4CAF50;
       transition: transform 0.3s;
     }
-    nav a:hover i { transform: scale(1.2) rotate(-10deg); }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0; bottom: 0;
-      height: 2px; width: 0%;
-      background-color: #6bbf59;
-      transition: width 0.3s;
+
+    .logo:hover i {
+      transform: rotate(-15deg) scale(1.2);
     }
-    nav a:hover { color: #3a6b4b; }
-    nav a:hover::after { width: 100%; }
+
+    .brand-name {
+      color: #2E7D32;
+    }
+
+    .brand-name .highlight {
+      color: #66BB6A;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    nav a i {
+      margin-right: 6px;
+      color: #4CAF50;
+    }
+
+    nav a:hover {
+      background: #e8f5e9;
+      color: var(--main-green);
+    }
+
+    /* ================= MOBILE ================= */
 
     .menu-toggle {
       display: none;
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
-      margin-left: 1rem;
-      color: #3a6b4b;
+      color: var(--main-green);
       background: none;
       border: none;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
     }
-    .menu-toggle:focus { outline: none; box-shadow: none; }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        height: 60px;
+      .menu-toggle {
+        display: block;
       }
-      .logo { font-size: 1.4rem; gap: 4px; }
-      .logo i { font-size: 1.4rem; }
-      .menu-toggle { display: block; font-size: 1.6rem; margin-top: -4px; }
+
       nav {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 70px;
         right: 20px;
-        background: #fff;
-        box-shadow: 0 8px 24px rgba(42, 157, 143, 0.10);
-        border-radius: 1rem;
+        background: white;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        border-radius: 12px;
         padding: 1rem 2rem;
-        z-index: 1000;
-        min-width: 180px;
-        animation: fadeInUp 0.3s;
       }
-      nav.show { display: flex; }
+
+      nav.show {
+        display: flex;
+      }
+
       nav a {
         padding: 0.8rem 0;
-        font-size: 1.1rem;
-        color: #3a6b4b;
+        width: 100%;
         border-bottom: 1px solid #e0f2ee;
-        margin: 0;
-        text-align: left;
       }
-      nav a:last-child { border-bottom: none; }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
     }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ================= MAIN ================= */
 
     main {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
       flex: 1;
+    }
+
+    .about-container h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--main-green);
+    }
+
+    .about-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #455a4f;
     }
   </style>
 </head>
@@ -166,59 +178,66 @@
 <header>
   <span class="logo">
     <i class="fas fa-leaf"></i>
-    <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+    <span class="brand-name">
+      Herbi<span class="highlight">pedia</span>
+    </span>
   </span>
 
-  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
 
-<nav id="navbar">
+  <nav id="navbar">
+    <a href="index.html" id="navHome">
+      <i class="fas fa-home"></i> Home
+    </a>
 
-  <a href="index.html" id="navHome">
-    <i class="fas fa-home"></i> Home
-  </a>
+    <a href="ayush.html" id="nav3D">
+      <i class="fas fa-cube"></i> 3D Plants
+    </a>
 
-  <a href="ayush.html" id="nav3D">
-    <i class="fas fa-cube"></i> 3D Plants
-  </a>
+    <a href="about.html" id="navAbout">
+      <i class="fas fa-users"></i> About Us
+    </a>
 
-  <a href="about.html" id="navAbout">
-    <i class="fas fa-users"></i> About Us
-  </a>
+    <a href="contact.html" id="navContact">
+      <i class="fas fa-envelope"></i> Contact Us
+    </a>
 
-  <a href="contact.html" id="navContact">
-    <i class="fas fa-envelope"></i> Contact Us
-  </a>
+    <a href="login.html" id="navLogin">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </a>
 
-  <a href="login.html" id="navLogin">
-    <i class="fas fa-sign-in-alt"></i> Login
-  </a>
+    <a href="register.html" id="navRegister">
+      <i class="fas fa-user-plus"></i> Register
+    </a>
 
-  <a href="register.html" id="navRegister">
-    <i class="fas fa-user-plus"></i> Register
-  </a>
-
-  <!-- 🔥 ADD THIS -->
-  <a href="#" id="navLogout" style="display:none;">
-    <i class="fas fa-sign-out-alt"></i> Logout
-  </a>
-
-</nav>
-
-
+    <a href="#" id="navLogout" style="display:none;">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </nav>
 </header>
 
 <main>
   <div class="about-container">
     <h2>Who We Are</h2>
-    <p>Welcome to our Herbipedia — a creative blend of botanical knowledge and digital innovation.</p>
+    <p>
+      Welcome to Herbipedia — a creative blend of botanical knowledge and digital innovation.
+      Our platform bridges traditional plant wisdom with immersive technology,
+      making learning interactive, engaging, and modern.
+    </p>
   </div>
 </main>
+
+<!-- Mobile Toggle Script -->
 <script>
-  window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("navbar");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("show");
   });
 </script>
 
+<!-- Firebase Auth Guard -->
 <script type="module" src="js/auth-guard.js"></script>
 
 </body>
