@@ -18,6 +18,7 @@
       --background: #f9faf8;
       --white: #fff;
       --text-dark: #25362b;
+      --accent-yellow: #FFD700; /* added*/
     }
 
     * {
@@ -28,6 +29,8 @@
 
     html, body {
       overflow-x: hidden;
+      height: 100vh;                                                                     /* added*/
+      cursor: url("http://www.rw-designer.com/cursor-extern.php?id=51983") 16 16, auto;
     }
 
     body {
@@ -37,8 +40,11 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      opacity: 0;                                              /* added*/
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    body.loaded { opacity: 1; }
     /* ================= HEADER ================= */
 
     header {
@@ -51,27 +57,41 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      animation: slideDown 0.3s; /*added*/
+      position: relative;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 20px; /* 1.3 rem */
+      font-weight: bold; /* 700 */
     }
+
+    .logo-text {                                                         /*added*/
+      background: linear-gradient(90deg, #3a6b4b 0%, #6bbf59 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
 
     .logo i {
       color: #4CAF50;
-      transition: transform 0.3s;
+      font-size: 1.3rem;      /*added*/
+      display: inline-block;
+      transition: transform 0.2s; /*0.3*/
+      
     }
 
     .logo:hover i {
-      transform: rotate(-15deg) scale(1.2);
+      transform: rotate(-18deg) scale(1.18); /*-15, 1.2*/
+      color: #6bbf59; /*added*/
     }
 
     .brand-name {
       color: #2E7D32;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; /*added*/
     }
 
     .brand-name .highlight {
@@ -85,18 +105,26 @@
     }
 
     nav a {
+      position: relative;
       text-decoration: none;
+      color: #25362b;
+      font-weight: 600;
+      padding: 7px 22px;
+      transition: color 0.3s;
+      font-family: 'Poppins', Arial, sans-serif;
+      /* text-decoration: none;
       color: var(--text-dark);
       font-weight: 600;
       padding: 8px 18px;
       border-radius: 6px;
       transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif; */
     }
 
     nav a i {
       margin-right: 6px;
       color: #4CAF50;
+      transition: transform 0.3s; /*added*/
     }
 
     nav a:hover {
@@ -104,21 +132,49 @@
       color: var(--main-green);
     }
 
+    nav a:hover i { transform: scale(1.2) rotate(-10deg); } /*added*/  
+
+     nav a::after {                   /*added*/
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px; width: 0%;
+      background-color: #6bbf59;
+      transition: width 0.3s;
+    } 
+
+    nav a:hover::after { width: 100%; }   /*added*/
+
     /* ================= MOBILE ================= */
 
     .menu-toggle {
       display: none;
-      font-size: 1.8rem;
+      font-size: 2rem; /*1.8*/
       cursor: pointer;
       color: var(--main-green);
       background: none;
       border: none;
+      outline: none;                             /*added*/
+      -webkit-tap-highlight-color: transparent;
+      margin-left: 1rem;
     }
 
+    .menu-toggle:focus { outline: none; box-shadow: none; }  /*added*/
+      
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
+        font-size: 1.6rem; margin-top: -4px; /*added*/ 
       }
+
+      header {                            /*added*/ 
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        height: 60px;
+      }
+      .logo { font-size: 1.4rem; gap: 4px; }
+      .logo i { font-size: 1.4rem; }
 
       nav {
         display: none;
@@ -130,6 +186,9 @@
         box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         border-radius: 12px;
         padding: 1rem 2rem;
+        z-index: 1000;                            /*added*/
+        min-width: 180px;
+        animation: fadeInUp 0.3s;
       }
 
       nav.show {
@@ -140,28 +199,45 @@
         padding: 0.8rem 0;
         width: 100%;
         border-bottom: 1px solid #e0f2ee;
+        font-size: 1.1rem;
+        color: #3a6b4b;
+        margin: 0;
+        text-align: left;
       }
 
       nav a:last-child {
         border-bottom: none;
       }
+      @keyframes slideDown {                                   /*added*/
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ================= MAIN ================= */
 
     main {
-      max-width: 900px;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      /* max-width: 900px;
       margin: 4rem auto;
       padding: 3rem;
       background: white;
       border-radius: 18px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      flex: 1;
+      flex: 1; */
     }
 
     .about-container h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem; /*2*/
+      margin-bottom: 1.5rem; /*1*/
       color: var(--main-green);
     }
 
@@ -169,7 +245,33 @@
       font-size: 1.1rem;
       line-height: 1.6;
       color: #455a4f;
+      margin-bottom: 1rem;
     }
+
+      .contact {                                        /*added*/
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      background: #ecfdf5;
+      padding: 1rem;
+      border-left: 6px solid var(--accent-green);
+      border-radius: 10px;
+    }
+    #Footer {
+      font-family: 'Nunito', sans-serif;
+      background-color: #3a6b4b;
+      color: white;
+      text-align: center;
+      padding: 19px;
+      margin-top: 46px;
+    }
+    #Footer a {
+      color: #FFD700;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    #Footer a:hover { color: #fff176; }
+    #Footer p { margin: 1px 0 0 0; }
+      
   </style>
 </head>
 
@@ -220,12 +322,21 @@
   <div class="about-container">
     <h2>Who We Are</h2>
     <p>
-      Welcome to Herbipedia — a creative blend of botanical knowledge and digital innovation.
-      Our platform bridges traditional plant wisdom with immersive technology,
-      making learning interactive, engaging, and modern.
+      Welcome to Herbipedia — a creative blend of botanical knowledge and digital innovation. From ancient remedies to modern-day relevance, we bring to life India's cherished herbal plants using immersive 3D experiences.
     </p>
+    <p>Our mission is to foster awareness, educate students, and promote the use of natural healing through
+        interactive learning. Each plant you see is backed by research, tradition, and an intuitive design to make
+        learning enjoyable and impactful.</p>
+      <p>Whether you're exploring for health, curiosity, or educational growth — our garden has something for everyone.
+      </p>
+      <p class="contact">📧 Get in touch with us: <strong>herbipedia2026@gmail.com</strong></p>
   </div>
 </main>
+  <footer id="Footer">
+    <p>&copy; 2026 Herbipedia. All rights reserved.</p>
+    <p><a href="contact.html">Contact Us</a></p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <!-- Mobile Toggle Script -->
 <script>
@@ -237,8 +348,37 @@
   });
 </script>
 
+   <!-- /* //Fade-in effect
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    // Mobile nav toggle
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.getElementById('navbar').classList.toggle('show');
+    });
+    // Animate logo on page load
+    gsap.to('.logo', {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "back.out(1.7)",
+      delay: 0.2
+    });
+    // Change header shadow on scroll
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      header.style.boxShadow = window.scrollY > 10
+        ? '0 4px 16px rgba(76,175,80,0.10)'
+        : '0 2px 4px rgba(0,0,0,0.1)';
+    });
+  </script> */ -->
+
+
+
+  
+
 <!-- Firebase Auth Guard -->
 <script type="module" src="js/auth-guard.js"></script>
-
+<script src="//code.tidio.co/jkz58qnv5cjqlyh3azdphziunrt9qhu.js" async></script>
 </body>
 </html>
