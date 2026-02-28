@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Tulsi Plant Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background-color: violet;
-      color: violet;
-      cursor: url("http://www.rw-designer.com/cursor-extern.php?id=51983") 16 16, auto;
+      background-color: #f3f4f6;   /* light grey background */
+      color: #374151;              /* dark grey text */
     }
 
+    /* Header */
     header {
-      background-color: white;
+      background-color: #ffffff;
       border-bottom: 1px solid #e5e7eb;
       padding: 20px;
       text-align: center;
@@ -24,29 +24,34 @@
     header h1 {
       font-size: 2em;
       margin: 0;
-      color: white;
+      color: #2d572c;   /* dark green heading */
     }
 
+    /* Main Container */
     .container {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
       display: flex;
       gap: 40px;
+      flex-wrap: wrap;
     }
 
     .left-column {
       flex: 1.5;
+      min-width: 300px;
     }
 
     .right-column {
       flex: 1;
-      background-color: white;
+      background-color: #ffffff;
       border: 1px solid #d1d5db;
       padding: 20px;
       border-radius: 10px;
+      min-width: 250px;
     }
 
+    /* Image */
     .plant-image {
       width: 100%;
       border-radius: 10px;
@@ -54,26 +59,30 @@
       margin-bottom: 20px;
     }
 
+    /* Description */
     .description {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 30px;
     }
 
+    /* Section Title */
     .section-title {
       font-size: 1.5rem;
       margin: 40px 0 20px;
       color: #437c41;
     }
 
+    /* Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
     }
 
+    /* Cards */
     .card {
-      background-color: white;
+      background-color: #ffffff;
       padding: 15px;
       border-left: 6px solid #76b947;
       border-radius: 10px;
@@ -84,57 +93,101 @@
       margin-top: 0;
       color: #437c41;
     }
+
+    /* Garden Info */
+    .right-column h2 {
+      color: #2d572c;
+      margin-top: 0;
+    }
+
+    .info-box {
+      margin-bottom: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
   </style>
 </head>
 
 <body>
+
   <header>
     <h1>Tulsi (Ocimum sanctum)</h1>
   </header>
+
   <div class="container">
+
+    <!-- Left Side -->
     <div class="left-column">
-        <img src="tulsi.jpg" alt="Tulsi Plant" class="plant-image">
+      <img src="tulsi.jpg" alt="Tulsi Plant" class="plant-image">
 
       <div class="description">
-        Tulsi, also known as Holy Basil, is a sacred plant in Ayurveda known for its medicinal and spiritual significance.
+        Tulsi, also known as Holy Basil, is a sacred plant in Ayurveda known for its medicinal and spiritual significance. 
+        It is widely used in traditional Indian medicine and is considered a symbol of purity and protection.
       </div>
+
       <div class="section-title">Plant Attributes & Uses</div>
+
       <div class="grid">
+
         <div class="card">
           <h3>Scientific Classification</h3>
-          <p><strong>Family:</strong> Lamiaceae<br><strong>Genus:</strong> Ocimum<br><strong>Species:</strong> O. sanctum</p>
+          <p>
+            <strong>Family:</strong> Lamiaceae <br>
+            <strong>Genus:</strong> Ocimum <br>
+            <strong>Species:</strong> O. sanctum
+          </p>
         </div>
+
         <div class="card">
           <h3>Global Spread</h3>
-          <p>Native to India, also found in Southeast Asia, and grown worldwide.</p>
+          <p>
+            Native to India, also found in Southeast Asia, and grown worldwide.
+          </p>
         </div>
+
         <div class="card">
           <h3>Preferred Climate</h3>
-          <p>Tropical and subtropical climates, thrives in well-drained soil.</p>
+          <p>
+            Tropical and subtropical climates, thrives in well-drained soil.
+          </p>
         </div>
+
         <div class="card">
           <h3>Medicinal Uses</h3>
-          <p>Boosts immunity, reduces stress, supports respiratory health, and acts as an adaptogen.</p>
+          <p>
+            Boosts immunity, reduces stress, supports respiratory health, and acts as an adaptogen.
+          </p>
         </div>
+
         <div class="card">
           <h3>Traditional Uses</h3>
-          <p>Used in Ayurveda for purification, respiratory support, and spiritual rituals.</p>
+          <p>
+            Used in Ayurveda for purification, respiratory support, and spiritual rituals.
+          </p>
         </div>
+
         <div class="card">
           <h3>Ayurvedic Benefits</h3>
-          <p>Balances Kapha and Vata, promotes mental clarity, enhances digestion.</p>
+          <p>
+            Balances Kapha and Vata, promotes mental clarity, enhances digestion.
+          </p>
         </div>
+
       </div>
     </div>
+
+    <!-- Right Side -->
     <div class="right-column">
-      <h2 style="color: #2d572c;">Garden Information</h2>
+      <h2>Garden Information</h2>
+
       <div class="info-box"><strong>Hardiness:</strong> Zones 10–11</div>
       <div class="info-box"><strong>Climate Zones:</strong> Tropical, Subtropical</div>
       <div class="info-box"><strong>Exposure:</strong> Full Sun</div>
       <div class="info-box"><strong>Soil Type:</strong> Well-drained, fertile soil</div>
       <div class="info-box"><strong>Water Needs:</strong> Moderate</div>
     </div>
-  </div>
-</body>
 
+  </div>
+
+</body>
 </html>
