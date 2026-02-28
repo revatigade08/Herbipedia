@@ -305,21 +305,28 @@
 
       /* ===== Responsive Chatbot ===== */
 
-        #chat-icon {
-          width: 30px;  /* 55 */
-          height: 30px;
-          font-size: 20px; /* 22 */
-          bottom: 15px;
-          right: 15px;
-        }
-        
-        #chat-container {
-          width: 80%;  /* 95% */
-          height: 70vh;
-          right: 2.5%;
-          bottom: 80px;
-          border-radius: 12px;
-        }
+        /* ===== Responsive Chatbot ===== */
+
+#chat-icon {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 22px !important;
+  bottom: 15px !important;
+  right: 15px !important;
+}
+
+#chat-icon::before {
+  animation: none !important;
+}
+
+#chat-container {
+  width: 95% !important;
+  max-width: 360px !important;
+  height: 75vh !important;
+  right: 2.5% !important;
+  bottom: 70px !important;
+}
+
 
     }
 
