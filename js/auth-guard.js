@@ -37,6 +37,8 @@ onAuthStateChanged(auth, (user) => {
       return;
     }
 
+    
+
     if (navLogin) navLogin.style.display = "inline-block";
     if (navRegister) navRegister.style.display = "inline-block";
 
@@ -62,5 +64,15 @@ onAuthStateChanged(auth, (user) => {
         window.location.replace("index.html");
       });
     }
+  }
+});
+import { auth } from "./firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+onAuthStateChanged(auth, (user) => {
+  const profileLink = document.getElementById("profileLink");
+
+  if (!user) {
+    profileLink.style.display = "none";
   }
 });
