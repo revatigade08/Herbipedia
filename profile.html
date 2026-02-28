@@ -2,53 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Profile - Herbipedia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="css/profile.css">
+  <title>Herbipedia - Profile</title>
+  <link rel="stylesheet" href="profile.css">
 </head>
-
 <body>
 
-<header>
-  <span class="logo">
-    🌿 Herbi<span style="color:#6bbf59;">pedia</span>
-  </span>
-</header>
+<div class="profile-container">
 
-<div class="profile-wrapper">
-
-  <!-- LEFT PROFILE CARD -->
   <div class="profile-card">
-    <div class="avatar" id="avatar">U</div>
-    <h2 id="userName">Loading...</h2>
-    <p id="userEmail"></p>
-
-    <button class="edit-btn" id="editProfile">
-      Edit Profile
-    </button>
-  </div>
-
-  <!-- RIGHT DASHBOARD -->
-  <div class="dashboard-section">
-
-    <h3>Personal Information</h3>
-
-    <div class="info-grid">
-      <div class="info-box">Username: <span id="username"></span></div>
-      <div class="info-box">Contact: <span id="contact"></span></div>
-      <div class="info-box">DOB: <span id="dob"></span></div>
-      <div class="info-box">Gender: <span id="gender"></span></div>
-      <div class="info-box">Member Since: <span id="createdAt"></span></div>
+    <div class="avatar-section">
+      <div class="avatar" id="profileAvatar"></div>
+      <input type="file" id="profileImageInput" hidden>
+      <button id="uploadImageBtn">Change Photo</button>
     </div>
 
-    <h3>Bookmarked Plants 🌿</h3>
-    <div class="bookmark-grid" id="bookmarkGrid"></div>
+    <h2 id="profileName"></h2>
+    <p class="username" id="profileUsername"></p>
 
+    <div class="info">
+      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+      <p><strong>DOB:</strong> <span id="profileDob"></span></p>
+      <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+      <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+      <p><strong>Member Since:</strong> <span id="profileCreated"></span></p>
+    </div>
+
+    <button id="editProfileBtn">Edit Profile</button>
+    <button id="logoutBtn" class="logout">Logout</button>
   </div>
+
+  <div class="bookmark-section">
+    <h3>Bookmarks (<span id="bookmarkCount">0</span>)</h3>
+    <div id="bookmarkList"></div>
+  </div>
+
 </div>
 
-<script type="module" src="js/profile.js"></script>
+<script type="module" src="profile.js"></script>
 </body>
 </html>
