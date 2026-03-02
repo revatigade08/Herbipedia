@@ -1,73 +1,71 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f7f6;
-  margin: 0;
-}
+/* ============================= */
+/* PROFILE PAGE STYLING */
+/* ============================= */
 
-.profile-container {
+/* Make section spacing same as About page */
+.about-section {
+  padding: 120px 20px 60px;
   display: flex;
-  gap: 30px;
-  padding: 40px;
-}
-
-.profile-card {
-  width: 320px;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  text-align: center;
-}
-
-.avatar {
-  width: 90px;
-  height: 90px;
-  background: #2e7d32;
-  color: white;
-  font-size: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  margin: auto;
-  overflow: hidden;
 }
 
-.avatar img {
+/* Container width */
+.about-container {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 1100px;
 }
 
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #2e7d32;
-  color: white;
+/* Title styling */
+.section-title {
+  font-size: 32px;
+  color: #1b5e20;
+  margin-bottom: 30px;
 }
 
-button.logout {
-  background: #c62828;
+/* Card style (same look as About) */
+.about-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.bookmark-section {
-  flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
+/* ============================= */
+/* PROFILE DETAILS */
+/* ============================= */
 
-.bookmark-card {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+.profile-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 16px;
 }
 
-.remove-btn {
-  background: #c62828;
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-row strong {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.profile-row span {
+  color: #333;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .profile-row span {
+    text-align: left;
+  }
 }
