@@ -115,40 +115,64 @@
 
   </div>
 
-  <!-- Firebase + Auth Protection -->
-  <script type="module">
+<script type="module">
 
-    import { auth } from "./js/firebase-config.js";
-    import { onAuthStateChanged, signOut }
-      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+  import { auth, db } from "./js/firebase-config.js";
+  import { onAuthStateChanged, signOut }
+    from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-    const logoutBtn = document.getElementById("logoutBtn");
+  import { doc, getDoc }
+    from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "login.html";
-      }
-    });
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-      window.location.href = "index.html";
-    });
+  const profileName = document.getElementById("profileName");
+  const profileUsername = document.getElementById("profileUsername");
+  const profileEmail = document.getElementById("profileEmail");
+  const profileContact = document.getElementById("profileContact");
+  const profileGender = document.getElementById("profileGender");
+  const profileDob = document.getElementById("profileDob");
 
-  </script>
+  // Auth state check
+  onAuthStateChanged(auth, async (user) => {
 
-  <!-- Scroll Detection -->
-  <script>
-    window.addEventListener("scroll", () => {
-      const actions = document.getElementById("profileActions");
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
 
-      if (window.scrollY > 150) {
-        actions.style.display = "flex";
+    try {
+      // Get user document from Firestore
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+
+        profileName.textContent = data.name || "";
+        profileUsername.textContent = data.username || "";
+        profileEmail.textContent = data.email || "";
+        profileContact.textContent = data.contact || "";
+        profileGender.textContent = data.gender || "";
+        profileDob.textContent = data.dob || "";
       } else {
-        actions.style.display = "none";
+        alert("No profile data found.");
       }
-    });
-  </script>
+
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      alert("Error loading profile.");
+    }
+
+  });
+
+  // Logout
+  logoutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "index.html";
+  });
+
+</script>
 
 </body>
 </html>
