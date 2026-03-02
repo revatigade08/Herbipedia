@@ -1,43 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Herbipedia - Profile</title>
-  <link rel="stylesheet" href="profile.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile - Herbipedia</title>
+
+  <!-- Same CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .profile-container {
+      width: 90%;
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .profile-container h2 {
+      color: #2E7D32;
+      margin-bottom: 20px;
+    }
+
+    .profile-field {
+      margin: 15px 0;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .profile-field span {
+      font-weight: bold;
+      color: #3a6b4b;
+    }
+
+    /* Buttons hidden initially */
+    .profile-actions {
+      margin-top: 40px;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .profile-btn {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .edit-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .logout-btn {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="profile-container">
+  <!-- Copy SAME HEADER from index.html -->
+  <header>
+    <span class="logo">
+      <i class="fas fa-leaf"></i>
+      <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+    </span>
 
-  <div class="profile-card">
-    <div class="avatar-section">
-      <div class="avatar" id="profileAvatar"></div>
-      <input type="file" id="profileImageInput" hidden>
-      <button id="uploadImageBtn">Change Photo</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ayush.html">3D Plants</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PROFILE SECTION -->
+  <div class="profile-container">
+
+    <h2>My Profile 🌿</h2>
+
+    <div class="profile-field">Name: <span id="profileName">Loading...</span></div>
+    <div class="profile-field">Username: <span id="profileUsername"></span></div>
+    <div class="profile-field">Email: <span id="profileEmail"></span></div>
+    <div class="profile-field">Contact: <span id="profileContact"></span></div>
+    <div class="profile-field">Gender: <span id="profileGender"></span></div>
+    <div class="profile-field">DOB: <span id="profileDob"></span></div>
+
+    <!-- Scroll Down Buttons -->
+    <div class="profile-actions" id="profileActions">
+      <button class="profile-btn edit-btn">Edit Profile</button>
+      <button class="profile-btn logout-btn" id="logoutBtn">Logout</button>
     </div>
 
-    <h2 id="profileName"></h2>
-    <p class="username" id="profileUsername"></p>
-
-    <div class="info">
-      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-      <p><strong>DOB:</strong> <span id="profileDob"></span></p>
-      <p><strong>Contact:</strong> <span id="profileContact"></span></p>
-      <p><strong>Gender:</strong> <span id="profileGender"></span></p>
-      <p><strong>Member Since:</strong> <span id="profileCreated"></span></p>
-    </div>
-
-    <button id="editProfileBtn">Edit Profile</button>
-    <button id="logoutBtn" class="logout">Logout</button>
   </div>
 
-  <div class="bookmark-section">
-    <h3>Bookmarks (<span id="bookmarkCount">0</span>)</h3>
-    <div id="bookmarkList"></div>
-  </div>
+  <!-- Scroll Detection Script -->
+  <script>
+    window.addEventListener("scroll", () => {
+      const actions = document.getElementById("profileActions");
 
-</div>
+      if (window.scrollY > 200) {
+        actions.style.display = "flex";
+      } else {
+        actions.style.display = "none";
+      }
+    });
+  </script>
 
-<script type="module" src="profile.js"></script>
 </body>
 </html>
