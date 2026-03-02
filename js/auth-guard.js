@@ -3,76 +3,62 @@ import { onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 const publicPages = ["index.html", "login.html", "register.html"];
-const authPages = ["login.html", "register.html"];
-function getCurrentPage() {
-  return window.location.pathname.split("/").pop();
-}
 
-function isPublicPage() {
-  const page = getCurrentPage();
-  return publicPages.includes(page) || page === "";
+function getCurrentPage() {
+  return window.location.pathname.split("/").pop() || "index.html";
 }
 
 onAuthStateChanged(auth, (user) => {
 
   const page = getCurrentPage();
-  const navbar = document.getElementById("navbar");
 
-  // 🔹 Hide entire navbar on login/register
-  if (authPages.includes(page) && navbar) {
-    navbar.style.display = "none";
-  }
-
+  const navLogin = document.getElementById("navLogin");
+  const navRegister = document.getElementById("navRegister");
   const nav3D = document.getElementById("nav3D");
   const navAbout = document.getElementById("navAbout");
   const navContact = document.getElementById("navContact");
-  const navLogin = document.getElementById("navLogin");
-  const navRegister = document.getElementById("navRegister");
+  const navProfile = document.getElementById("navProfile");
   const navLogout = document.getElementById("navLogout");
 
   if (!user) {
 
-    if (!isPublicPage()) {
-      window.location.replace("index.html");
+    // 🚫 Redirect if trying to access protected page
+    if (!publicPages.includes(page)) {
+      window.location.replace("login.html");
       return;
     }
 
-    
-
+    // Show only public nav items
     if (navLogin) navLogin.style.display = "inline-block";
     if (navRegister) navRegister.style.display = "inline-block";
 
     if (nav3D) nav3D.style.display = "none";
     if (navAbout) navAbout.style.display = "none";
     if (navContact) navContact.style.display = "none";
+    if (navProfile) navProfile.style.display = "none";
     if (navLogout) navLogout.style.display = "none";
 
   } else {
 
+    // Hide login/register
     if (navLogin) navLogin.style.display = "none";
     if (navRegister) navRegister.style.display = "none";
 
+    // Show protected nav items
     if (nav3D) nav3D.style.display = "inline-block";
     if (navAbout) navAbout.style.display = "inline-block";
     if (navContact) navContact.style.display = "inline-block";
+    if (navProfile) navProfile.style.display = "inline-block";
     if (navLogout) navLogout.style.display = "inline-block";
 
-    if (navLogout) {
+    // Logout logic (only attach once)
+    if (navLogout && !navLogout.dataset.listener) {
+      navLogout.dataset.listener = "true";
       navLogout.addEventListener("click", async (e) => {
         e.preventDefault();
         await signOut(auth);
         window.location.replace("index.html");
       });
     }
-  }
-});
-import { auth } from "./firebase-config.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-onAuthStateChanged(auth, (user) => {
-  const profileLink = document.getElementById("profileLink");
-
-  if (!user) {
-    profileLink.style.display = "none";
   }
 });
