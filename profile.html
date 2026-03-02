@@ -1,176 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Profile - Herbipedia</title>
+  <meta charset="UTF-8">
+  <title>Profile - Herbipedia</title>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <style>
-    body {
-      background-color: #f4fdf6;
-    }
-
-    .profile-container {
-      width: 90%;
-      max-width: 650px;
-      margin: 120px auto 80px;
-      padding: 35px;
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    }
-
-    .profile-container h2 {
-      text-align: center;
-      color: #2E7D32;
-      margin-bottom: 30px;
-    }
-
-    .profile-field {
-      margin: 15px 0;
-      font-size: 17px;
-      padding: 8px 0;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .profile-field span {
-      font-weight: 600;
-      color: #3a6b4b;
-      margin-left: 5px;
-    }
-
-    .profile-actions {
-      margin-top: 40px;
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .profile-btn {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .edit-btn {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .logout-btn {
-      background-color: #d32f2f;
-      color: white;
-    }
-
-    .profile-btn:hover {
-      transform: scale(1.05);
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- Header (same style as main page) -->
-  <header>
-    <span class="logo">
-      <i class="fas fa-leaf"></i>
-      <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
-    </span>
+<header>
+  <span class="logo">
+    <i class="fas fa-leaf"></i>
+    <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+  </span>
 
-    <nav>
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
-      <a href="about.html"><i class="fas fa-users"></i> About</a>
-      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
+    <a href="about.html"><i class="fas fa-users"></i> About</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </nav>
+</header>
 
-  <!-- Profile Section -->
-  <div class="profile-container">
 
-    <h2>My Profile 🌿</h2>
+<section style="margin-top:120px;">
+  <div class="container">
+    <div class="content">
 
-    <div class="profile-field">Name: <span id="profileName">Loading...</span></div>
-    <div class="profile-field">Username: <span id="profileUsername"></span></div>
-    <div class="profile-field">Email: <span id="profileEmail"></span></div>
-    <div class="profile-field">Contact: <span id="profileContact"></span></div>
-    <div class="profile-field">Gender: <span id="profileGender"></span></div>
-    <div class="profile-field">DOB: <span id="profileDob"></span></div>
+      <div class="text" style="width:100%;">
 
-    <!-- Scroll Visible Buttons -->
-    <div class="profile-actions" id="profileActions">
-      <button class="profile-btn edit-btn">Edit Profile</button>
-      <button class="profile-btn logout-btn" id="logoutBtn">Logout</button>
+        <h2>My Profile 🌿</h2>
+
+        <p><strong>Name:</strong> <span id="profileName">Loading...</span></p>
+        <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+        <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+        <p><strong>DOB:</strong> <span id="profileDob"></span></p>
+
+      </div>
+
     </div>
-
   </div>
+</section>
+
 
 <script type="module">
 
-  import { auth, db } from "./js/firebase-config.js";
-  import { onAuthStateChanged, signOut }
-    from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+import { auth, db } from "./js/firebase-config.js";
+import { onAuthStateChanged, signOut }
+  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+import { doc, getDoc }
+  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-  import { doc, getDoc }
-    from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+const logoutBtn = document.getElementById("logoutBtn");
 
-  const logoutBtn = document.getElementById("logoutBtn");
+const profileName = document.getElementById("profileName");
+const profileUsername = document.getElementById("profileUsername");
+const profileEmail = document.getElementById("profileEmail");
+const profileContact = document.getElementById("profileContact");
+const profileGender = document.getElementById("profileGender");
+const profileDob = document.getElementById("profileDob");
 
-  const profileName = document.getElementById("profileName");
-  const profileUsername = document.getElementById("profileUsername");
-  const profileEmail = document.getElementById("profileEmail");
-  const profileContact = document.getElementById("profileContact");
-  const profileGender = document.getElementById("profileGender");
-  const profileDob = document.getElementById("profileDob");
+onAuthStateChanged(auth, async (user) => {
 
-  // Auth state check
-  onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
 
-    if (!user) {
-      window.location.href = "login.html";
-      return;
-    }
+  const docRef = doc(db, "users", user.uid);
+  const docSnap = await getDoc(docRef);
 
-    try {
-      // Get user document from Firestore
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    const data = docSnap.data();
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
+    profileName.textContent = data.name;
+    profileUsername.textContent = data.username;
+    profileEmail.textContent = data.email;
+    profileContact.textContent = data.contact;
+    profileGender.textContent = data.gender;
+    profileDob.textContent = data.dob;
+  }
 
-        profileName.textContent = data.name || "";
-        profileUsername.textContent = data.username || "";
-        profileEmail.textContent = data.email || "";
-        profileContact.textContent = data.contact || "";
-        profileGender.textContent = data.gender || "";
-        profileDob.textContent = data.dob || "";
-      } else {
-        alert("No profile data found.");
-      }
+});
 
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-      alert("Error loading profile.");
-    }
-
-  });
-
-  // Logout
-  logoutBtn.addEventListener("click", async () => {
-    await signOut(auth);
-    window.location.href = "index.html";
-  });
+logoutBtn.addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "index.html";
+});
 
 </script>
 
