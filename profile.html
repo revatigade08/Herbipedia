@@ -5,38 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Profile - Herbipedia</title>
 
-  <!-- Same CSS -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
 
   <style>
+    body {
+      background-color: #f4fdf6;
+    }
+
     .profile-container {
       width: 90%;
-      max-width: 700px;
-      margin: 100px auto;
-      padding: 30px;
+      max-width: 650px;
+      margin: 120px auto 80px;
+      padding: 35px;
       background: #ffffff;
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
 
     .profile-container h2 {
+      text-align: center;
       color: #2E7D32;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .profile-field {
       margin: 15px 0;
-      font-size: 18px;
-      text-align: left;
+      font-size: 17px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
     }
 
     .profile-field span {
-      font-weight: bold;
+      font-weight: 600;
       color: #3a6b4b;
+      margin-left: 5px;
     }
 
-    /* Buttons hidden initially */
     .profile-actions {
       margin-top: 40px;
       display: none;
@@ -48,7 +57,7 @@
       padding: 12px;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -71,7 +80,7 @@
 
 <body>
 
-  <!-- Copy SAME HEADER from index.html -->
+  <!-- Header (same style as main page) -->
   <header>
     <span class="logo">
       <i class="fas fa-leaf"></i>
@@ -79,14 +88,14 @@
     </span>
 
     <nav>
-      <a href="index.html">Home</a>
-      <a href="ayush.html">3D Plants</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
+      <a href="about.html"><i class="fas fa-users"></i> About</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
   </header>
 
-  <!-- PROFILE SECTION -->
+  <!-- Profile Section -->
   <div class="profile-container">
 
     <h2>My Profile 🌿</h2>
@@ -98,7 +107,7 @@
     <div class="profile-field">Gender: <span id="profileGender"></span></div>
     <div class="profile-field">DOB: <span id="profileDob"></span></div>
 
-    <!-- Scroll Down Buttons -->
+    <!-- Scroll Visible Buttons -->
     <div class="profile-actions" id="profileActions">
       <button class="profile-btn edit-btn">Edit Profile</button>
       <button class="profile-btn logout-btn" id="logoutBtn">Logout</button>
@@ -106,12 +115,34 @@
 
   </div>
 
-  <!-- Scroll Detection Script -->
+  <!-- Firebase + Auth Protection -->
+  <script type="module">
+
+    import { auth } from "./js/firebase-config.js";
+    import { onAuthStateChanged, signOut }
+      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "index.html";
+    });
+
+  </script>
+
+  <!-- Scroll Detection -->
   <script>
     window.addEventListener("scroll", () => {
       const actions = document.getElementById("profileActions");
 
-      if (window.scrollY > 200) {
+      if (window.scrollY > 150) {
         actions.style.display = "flex";
       } else {
         actions.style.display = "none";
