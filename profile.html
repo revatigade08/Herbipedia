@@ -4,98 +4,157 @@
   <meta charset="UTF-8">
   <title>Profile - Herbipedia</title>
 
+  <!-- Font Awesome -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
+
   <span class="logo">
     <i class="fas fa-leaf"></i>
-    <span class="brand-name">Herbi<span class="highlight">pedia</span></span>
+    <span class="brand-name">
+      Herbi<span class="highlight">pedia</span>
+    </span>
   </span>
 
-  <nav>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="ayush.html"><i class="fas fa-cube"></i> 3D Plants</a>
-    <a href="about.html"><i class="fas fa-users"></i> About</a>
-    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+  <nav id="navbar">
+
+    <a href="index.html" id="navHome">
+      <i class="fas fa-home"></i> Home
+    </a>
+
+    <a href="ayush.html" id="nav3D" style="display:none;">
+      <i class="fas fa-cube"></i> 3D Plants
+    </a>
+
+    <a href="about.html" id="navAbout" style="display:none;">
+      <i class="fas fa-users"></i> About
+    </a>
+
+    <a href="contact.html" id="navContact" style="display:none;">
+      <i class="fas fa-envelope"></i> Contact
+    </a>
+
+    <a href="profile.html" id="navProfile" style="display:none;">
+      <i class="fas fa-user"></i> Profile
+    </a>
+
+    <a href="login.html" id="navLogin">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </a>
+
+    <a href="register.html" id="navRegister">
+      <i class="fas fa-user-plus"></i> Register
+    </a>
+
+    <a href="#" id="navLogout" style="display:none;">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+
   </nav>
+
 </header>
 
+<!-- ===== PROFILE SECTION (Styled Like About Page) ===== -->
 
-<section style="margin-top:120px;">
-  <div class="container">
-    <div class="content">
+<section class="about-section">
 
-      <div class="text" style="width:100%;">
+  <div class="about-container">
 
-        <h2>My Profile 🌿</h2>
+    <h2 class="section-title">My Profile 🌿</h2>
 
-        <p><strong>Name:</strong> <span id="profileName">Loading...</span></p>
-        <p><strong>Username:</strong> <span id="profileUsername"></span></p>
-        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-        <p><strong>Contact:</strong> <span id="profileContact"></span></p>
-        <p><strong>Gender:</strong> <span id="profileGender"></span></p>
-        <p><strong>DOB:</strong> <span id="profileDob"></span></p>
+    <div class="about-card">
 
+      <div class="profile-row">
+        <strong>Name:</strong>
+        <span id="profileName">Loading...</span>
+      </div>
+
+      <div class="profile-row">
+        <strong>Username:</strong>
+        <span id="profileUsername"></span>
+      </div>
+
+      <div class="profile-row">
+        <strong>Email:</strong>
+        <span id="profileEmail"></span>
+      </div>
+
+      <div class="profile-row">
+        <strong>Contact:</strong>
+        <span id="profileContact"></span>
+      </div>
+
+      <div class="profile-row">
+        <strong>Gender:</strong>
+        <span id="profileGender"></span>
+      </div>
+
+      <div class="profile-row">
+        <strong>DOB:</strong>
+        <span id="profileDob"></span>
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+<!-- ===== PROFILE SCRIPT ===== -->
 
 <script type="module">
 
 import { auth, db } from "./js/firebase-config.js";
-import { onAuthStateChanged, signOut }
-  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+import { onAuthStateChanged }
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 import { doc, getDoc }
-  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
-
-const logoutBtn = document.getElementById("logoutBtn");
-
-const profileName = document.getElementById("profileName");
-const profileUsername = document.getElementById("profileUsername");
-const profileEmail = document.getElementById("profileEmail");
-const profileContact = document.getElementById("profileContact");
-const profileGender = document.getElementById("profileGender");
-const profileDob = document.getElementById("profileDob");
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 onAuthStateChanged(auth, async (user) => {
 
   if (!user) {
-    window.location.href = "login.html";
+    window.location.replace("index.html");
     return;
   }
 
-  const docRef = doc(db, "users", user.uid);
-  const docSnap = await getDoc(docRef);
+  try {
 
-  if (docSnap.exists()) {
-    const data = docSnap.data();
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
 
-    profileName.textContent = data.name;
-    profileUsername.textContent = data.username;
-    profileEmail.textContent = data.email;
-    profileContact.textContent = data.contact;
-    profileGender.textContent = data.gender;
-    profileDob.textContent = data.dob;
+    if (docSnap.exists()) {
+
+      const data = docSnap.data();
+
+      document.getElementById("profileName").textContent = data.name || "";
+      document.getElementById("profileUsername").textContent = data.username || "";
+      document.getElementById("profileEmail").textContent = data.email || "";
+      document.getElementById("profileContact").textContent = data.contact || "";
+      document.getElementById("profileGender").textContent = data.gender || "";
+      document.getElementById("profileDob").textContent = data.dob || "";
+
+    }
+
+  } catch (error) {
+    console.error("Profile Load Error:", error);
   }
 
 });
 
-logoutBtn.addEventListener("click", async () => {
-  await signOut(auth);
-  window.location.href = "index.html";
-});
-
 </script>
+
+<!-- Global Auth Controller -->
 <script type="module" src="js/auth.js"></script>
+
 </body>
 </html>
