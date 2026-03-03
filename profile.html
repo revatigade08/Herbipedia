@@ -30,10 +30,9 @@
       <i class="fas fa-home"></i> Home
     </a>
 
-    <a href="#" id="navLogout">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
-  </nav>
+<a href="#" id="navLogout">
+    <i class="fas fa-sign-out-alt"></i> Logout
+</a>
 
 </header>
 
@@ -116,7 +115,24 @@ onAuthStateChanged(auth, async (user) => {
 
 });
 </script>
+<script type="module">
+import { auth } from "./js/firebase-config.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
+const logoutBtn = document.getElementById("navLogout");
+
+logoutBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    try {
+        await signOut(auth);
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("Logout Error:", error);
+        alert("Logout failed. Try again.");
+    }
+});
+</script>
 <!-- Global Auth Controller -->
 <script type="module" src="js/auth.js"></script>
 
