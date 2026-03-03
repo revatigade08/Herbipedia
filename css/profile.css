@@ -6,15 +6,17 @@
     border-radius: 10px;
     margin: 2rem auto;
     max-width: 900px;
+    text-align: left;
 }
 
-/* Profile Title */
+/* Title */
 #profile h2 {
     color: #4CAF50;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* Profile Rows */
+/* Rows */
 .profile-row {
     display: flex;
     justify-content: space-between;
@@ -40,7 +42,6 @@
 @media (max-width: 768px) {
     .profile-row {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
+        gap: 6px;
     }
 }
