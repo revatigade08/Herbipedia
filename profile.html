@@ -16,88 +16,65 @@
 <body>
 
 <!-- ===== HEADER ===== -->
-<header>
+<header class="main-header">
 
-  <span class="logo">
+  <div class="logo">
     <i class="fas fa-leaf"></i>
     <span class="brand-name">
       Herbi<span class="highlight">pedia</span>
     </span>
-  </span>
+  </div>
 
-  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-
-  <nav id="navbar">
-
-    <a href="index.html" id="navHome">
+  <nav class="main-nav">
+    <a href="index.html">
       <i class="fas fa-home"></i> Home
     </a>
 
-    <a href="ayush.html" id="nav3D" style="display:none;">
-      <i class="fas fa-cube"></i> 3D Plants
-    </a>
-
-    <a href="about.html" id="navAbout" style="display:none;">
-      <i class="fas fa-users"></i> About
-    </a>
-
-    <a href="contact.html" id="navContact" style="display:none;">
-      <i class="fas fa-envelope"></i> Contact
-    </a>
-
-    <a href="profile.html" id="navProfile" style="display:none;">
-      <i class="fas fa-user"></i> Profile
-    </a>
-
-    <a href="login.html" id="navLogin">
-      <i class="fas fa-sign-in-alt"></i> Login
-    </a>
-
-    <a href="register.html" id="navRegister">
-      <i class="fas fa-user-plus"></i> Register
-    </a>
-
-    <a href="#" id="navLogout" style="display:none;">
+    <a href="#" id="navLogout">
       <i class="fas fa-sign-out-alt"></i> Logout
     </a>
-
   </nav>
 
 </header>
+
 
 <!-- ===== PROFILE SECTION ===== -->
 <section id="profile">
 
   <h2>My Profile 🌿</h2>
 
-  <div class="profile-row">
-    <strong>Name:</strong>
-    <span id="profileName">Loading...</span>
-  </div>
+  <div class="profile-card">
 
-  <div class="profile-row">
-    <strong>Username:</strong>
-    <span id="profileUsername"></span>
-  </div>
+    <div class="profile-row">
+      <span class="label">Name</span>
+      <span id="profileName"></span>
+    </div>
 
-  <div class="profile-row">
-    <strong>Email:</strong>
-    <span id="profileEmail"></span>
-  </div>
+    <div class="profile-row">
+      <span class="label">Username</span>
+      <span id="profileUsername"></span>
+    </div>
 
-  <div class="profile-row">
-    <strong>Contact:</strong>
-    <span id="profileContact"></span>
-  </div>
+    <div class="profile-row">
+      <span class="label">Email</span>
+      <span id="profileEmail"></span>
+    </div>
 
-  <div class="profile-row">
-    <strong>Gender:</strong>
-    <span id="profileGender"></span>
-  </div>
+    <div class="profile-row">
+      <span class="label">Contact</span>
+      <span id="profileContact"></span>
+    </div>
 
-  <div class="profile-row">
-    <strong>DOB:</strong>
-    <span id="profileDob"></span>
+    <div class="profile-row">
+      <span class="label">Gender</span>
+      <span id="profileGender"></span>
+    </div>
+
+    <div class="profile-row">
+      <span class="label">DOB</span>
+      <span id="profileDob"></span>
+    </div>
+
   </div>
 
 </section>
